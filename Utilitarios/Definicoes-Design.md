@@ -7,22 +7,20 @@ Definir a paleta de cores do sistema torna o processo de padronização de estil
 
 Deste modo, a paleta de cores do sistema deve se basear em:
 
-![Paleta de Cores](Paleta-Cores.png)
+![Paleta de Cores](Img-Design/Paleta-Cores.png)
 
 **Principal:**
-<div>
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-square-fill" viewBox="0 0 16 16"> <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 555 0 1-2-2V2z" fill="#212b58"></path> </svg> #212B58
-</div>
 
+<img src="Img-Design/212b58.svg" width="15" eigth="15"> #212B58
 
 **Secundárias:**
-<div>
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-square-fill" viewBox="0 0 16 16"> <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 555 0 1-2-2V2z" fill="#2160DB"></path> </svg> #2160DB
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-square-fill" viewBox="0 0 16 16"> <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 555 0 1-2-2V2z" fill="#839EEF"></path> </svg> #839EEF 
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-square-fill" viewBox="0 0 16 16"> <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 555 0 1-2-2V2z" fill="#F2F2F2"></path> </svg> #F2F2F2 
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-square-fill" viewBox="0 0 16 16"> <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 555 0 1-2-2V2z" fill="#F8AB02"></path> </svg> #F8AB02
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-square-fill" viewBox="0 0 16 16"> <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 555 0 1-2-2V2z" fill="#48E595"></path> </svg> #48E595
-</div>
+
+<img src="Img-Design/2160bd.svg" width="15" eigth="15"> #2160DB
+<img src="Img-Design/839eef.svg" width="15" eigth="15"> #839EEF
+<img src="Img-Design/f2f2f2.svg" width="15" eigth="15"> #F2F2F2
+<img src="Img-Design/e8ab02.svg" width="15" eigth="15"> #F8AB02
+<img src="Img-Design/48e595.svg" width="15" eigth="15"> #48E595
+
 
 ---
 ## Tipografia
@@ -31,7 +29,7 @@ Assim como a definição de cores, a padronização de tipografia, utilizando um
 
 Fica definida a fonte [Roboto](https://fonts.google.com/specimen/Roboto), sendo livre o uso de suas variações.
 
-![Font Family](Font-Family.png)
+![Font Family](Img-Design/Font-Family.png)
 
 ----
 
