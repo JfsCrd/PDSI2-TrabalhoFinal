@@ -10,4 +10,4 @@ A documentação inicial, desenvolvida na disciplina Projeto e Desenvolvimento d
 
 ----
 
-Acesse o protótipo no Netlify! 👉 [![Netlify Status](https://api.netlify.com/api/v1/badges/a86ba4a6-b1a7-4420-b513-e804bfbb5f16/deploy-status)](https://app.netlify.com/sites/alumnifacom/deploys)
+Acesse o protótipo no Netlify! 👉 [![Netlify Status](https://api.netlify.com/api/v1/badges/a86ba4a6-b1a7-4420-b513-e804bfbb5f16/deploy-status)](https://alumnifacom.netlify.app/)
