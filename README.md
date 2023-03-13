@@ -9,4 +9,5 @@ O projeto proposto é um portal de egressos para a Faculdade de Computação da 
 A documentação inicial, desenvolvida na disciplina Projeto e Desenvolvimento de Software 1 pode ser encontrada [clicando aqui](PDSI-1/Trabalho_Final_PDSI1_JeffersonDias.pdf).
 
 ----
+
 Acesse o protótipo no Netlify! 👉 [![Netlify Status](https://api.netlify.com/api/v1/badges/a86ba4a6-b1a7-4420-b513-e804bfbb5f16/deploy-status)](https://app.netlify.com/sites/alumnifacom/deploys)
