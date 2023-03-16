@@ -4,6 +4,8 @@ if (window.innerWidth < 768) {
 		elem.classList.remove('animated');
 		elem.removeAttribute('data-bss-hover-animate');
 		elem.removeAttribute('data-aos');
+		elem.removeAttribute('data-bss-parallax-bg');
+		elem.removeAttribute('data-bss-scroll-zoom');
 	});
 }
 
@@ -18,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
 (function(){
 
 	if (!('requestAnimationFrame' in window)) return;
-	if (/Mobile|Android/.test(navigator.userAgent)) return;
 
 	var backgrounds = [];
 	var parallaxBackgrounds = document.querySelectorAll('[data-bss-parallax-bg]');
