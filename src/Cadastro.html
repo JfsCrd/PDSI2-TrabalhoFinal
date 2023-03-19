@@ -37,8 +37,8 @@
     <!-- Start: Cadastro -->
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-9" style="margin-right: 33.3333%;">
-                <form style="margin-left: 45px; margin-top: 20px;">
+            <div class="col-md-10 main">
+                <form style="margin-left: 45px; margin-top: 20px; margin-right: 45px;">
                     <!-- Start: Dados Pessoais -->
                     <h2 id="info">Informações Pessoais</h2>
                     <div class="row">
@@ -238,20 +238,44 @@
                             <label for="inputSenha2">Confirme a senha</label>
                             <input id="senha2" type="password" class="form-control" placeholder="12345">
                         </div>
+                        <div class="row">
+                          
+                        </div>
                     </div>
                     </br>
                     </br>
-
+                    </br>
                     <button type="submit" class="btn btn-primary" style="margin-bottom: 50px;background: #212b58;border-radius: 0px;border-color: #212b58;">Cadastar</button>
                 </form>
             </div>
-            <div class="col-md-3" style="position:fixed; height: 100%; top: auto; right: 0; bottom: auto; left: auto; overflow-y: auto; background-color: #212b58;">
-                <ul class="list-inline" style="color: #f2f2f2;">
-                    <li class="list-group-item"><a class="nav-link" href="#info">Informações Pessoais</a></li></br>
-                    <li class="list-group-item"><a class="nav-link" href="#contato">Contato</a></li></br>
-                    <li class="list-group-item"><a class="nav-link" href="#academica">Experiência Acadêmica</a></li></br>
-                    <li class="list-group-item"><a href="#profissional" class="nav-link">Experiência Profissional</a></li></br>
-                    <li class="list-group-item"><a href="#acesso" class="nav-link">Dados de Acesso</a></li></br>
+            <div class="col-md-2 d-none d-md-block" style="background-color: #212b58; margin-top: -20px;position: sticky">
+                <ul class="list-inline" style="color: #f2f2f2; margin-top: 50px; position: fixed;">
+                    <li class="list-group-item">
+                        <a class="nav-link" href="#info">
+                            <span id="textoInfo">Informações Pessoais</span>
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="nav-link" style="margin-top: 20px" href="#contato">
+                            <span id="textoContato" >Contato</span>
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="nav-link" style="margin-top: 20px" href="#academica">
+                            <span id="textoAcademica">Experiência Acadêmica</span>
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="nav-link" style="margin-top: 20px;" href="#profissional">
+                            <span id="textoProfissional">Experiência Profissional</span>
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="#acesso" class="nav-link" style="margin-top: 20px;">
+                            <span id="textoAcesso">Dados de Acesso</span>
+                        </a>
+                    </li>
+                    </br>
                 </ul>
             </div>
         </div>
@@ -279,6 +303,7 @@
     <script src="assets/js/bs-init.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.js"></script>
     <script src="assets/js/Simple-Slider.js"></script>
+
     
     
 </body>
