@@ -42,25 +42,19 @@
     }
 
     //login usuário
-    function loginUser($email, $pass){ //login
+    function login($user, $pass){ //login
 
         include ("Model-DataBase.php");
         
-        $query = "SELECT * FROM user WHERE email = '$email' and password = '$pass';";
-
-        $command = mysqli_query($conn, $query);
-
-        $num_rows = mysqli_num_rows($command);
-
-        if($num_rows>= 1){
-            $user = mysqli_fetch_assoc($command); //transform dates in arrayss
-            return $user; 
-        }
+        $sql = "SELECT * FROM acesso WHERE usuario = '$user' and senha = '$pass'";
+        $result = mysqli_query($conn, $sql);
         
-        else            
-            return false;
-
+        if (mysqli_num_rows($result) > 0)
+          $result_login = 1;
+      
+      else 
+          $result_login = 0;
+      
+      return $result_login;
     }
- 
-
 ?>

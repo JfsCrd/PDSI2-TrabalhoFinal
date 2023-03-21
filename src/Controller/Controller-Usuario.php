@@ -52,7 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usuario = filter_input(INPUT_POST, "usuario");
     $senha = filter_input(INPUT_POST, "senha");
 
-    $acao = filter_input(INPUT_POST, "acao");
+    //login
+    $user = filter_input(INPUT_POST, 'username');
+    $pass = filter_input(INPUT_POST,'password');
+
+    $acao = $_POST['acao'];
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         //chamando a função de registro
@@ -69,38 +73,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header('Location: /Login.html');
             }
         }
+
+        else if($acao === 'login'){
+            $return_login = login($user, $pass);
+
+            if($return_login === 1){
+                echo 'sucesso';
+                $_SESSION['usuario'] = $user;
+            }
+            else 
+                echo 'falha';
+            
+        }
     }
-        
-    //Login
-
-    // elseif($action_form === 'login'){
-    //     $return_login = loginUser($login_email, $login_pass);
-
-    //     if ($return_login != false) {
-    //         $_SESSION['s_idUser'] = $return_login['idUser'];
-    //         $_SESSION['s_name'] = $return_login['Name'];
-    //         $_SESSION['s_date'] = $return_login['Birth'];
-    //         $_SESSION['s_email'] = $return_login['Email'];
-    //         $_SESSION['s_telephone'] = $return_login['Telephone'];
-    //         $_SESSION['s_pass'] = $return_login['Password'];
-    //         $_SESSION['s_rank'] = $return_login['Rank'];
-    //         $_SESSION['s_full_adress'] = $return_login['Adress'];
-
-    //         if ($_SESSION['s_rank'] == 1)
-    //             echo "<script type='text/javascript'>alert('Login sucess! Wellcome');window.location.href = '../View/Home-User.php';</script>";
-
-    //         else {
-    //             echo "<script type='text/javascript'>alert('Login sucess');window.location.href = '../View/Home-Adm.php';</script>";
-    //         }
-    //     }
-    //     else{
-    //         echo "<script type='text/javascript'>alert('Login fail.');window.location.href ='../View/Register.php';</script>";
-    //     }
-
-    // }
 
 }
-
-
-
 ?>
