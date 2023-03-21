@@ -52,11 +52,11 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `pdsi2`.`experiencia_cursando` (
   `id_experiencia_cursando` INT NOT NULL AUTO_INCREMENT,
-  `formacao` VARCHAR(45) NOT NULL,
-  `instituicao` VARCHAR(45) NOT NULL,
-  `data_inicio` DATE NOT NULL,
-  `data_fim` DATE NOT NULL,
-  `titulo` VARCHAR(45) NOT NULL,
+  `formacao` VARCHAR(45) NULL,
+  `instituicao` VARCHAR(45) NULL,
+  `data_inicio` DATE NULL,
+  `data_fim` DATE NULL,
+  `titulo` VARCHAR(45) NULL,
   PRIMARY KEY (`id_experiencia_cursando`))
 ENGINE = InnoDB;
 
@@ -65,13 +65,13 @@ ENGINE = InnoDB;
 -- Table `pdsi2`.`experiencia_profissional`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `pdsi2`.`experiencia_profissional` (
-  `id_experiencia_profissional` INT NOT NULL,
-  `cargo` VARCHAR(45) NOT NULL,
-  `empresa` VARCHAR(45) NOT NULL,
-  `area` VARCHAR(45) NOT NULL,
-  `salario` FLOAT NOT NULL,
-  `local` VARCHAR(45) NOT NULL,
-  `descricao` VARCHAR(100) NOT NULL,
+  `id_experiencia_profissional` INT NOT NULL AUTO_INCREMENT,
+  `cargo` VARCHAR(45) NULL,
+  `empresa` VARCHAR(45) NULL,
+  `area` VARCHAR(45) NULL,
+  `salario` FLOAT NULL,
+  `local` VARCHAR(45) NULL,
+  `descricao` VARCHAR(100) NULL,
   PRIMARY KEY (`id_experiencia_profissional`))
 ENGINE = InnoDB;
 
@@ -80,7 +80,7 @@ ENGINE = InnoDB;
 -- Table `pdsi2`.`acesso`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `pdsi2`.`acesso` (
-  `id_acesso` INT NOT NULL,
+  `id_acesso` INT NOT NULL AUTO_INCREMENT,
   `usuario` VARCHAR(45) NOT NULL,
   `senha` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`id_acesso`))
@@ -95,7 +95,6 @@ CREATE TABLE IF NOT EXISTS `pdsi2`.`usuario` (
   `id_usuario` VARCHAR(11) NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
   `sobrenome` VARCHAR(45) NOT NULL,
-  `cpf` VARCHAR(11) NOT NULL,
   `data_nascimento` DATE NOT NULL,
   `fk_contato` INT NOT NULL,
   `fk_experiencia_concluida` INT NOT NULL,
@@ -103,11 +102,11 @@ CREATE TABLE IF NOT EXISTS `pdsi2`.`usuario` (
   `fk_experiencia_profissional` INT NOT NULL,
   `fk_acesso` INT NOT NULL,
   PRIMARY KEY (`id_usuario`),
-  INDEX `fk_Usuario_contato_idx` (`fk_contato` ASC),
-  INDEX `fk_usuario_experiencia_concluida1_idx` (`fk_experiencia_concluida` ASC),
-  INDEX `fk_usuario_experiencia_cursando1_idx` (`fk_experiencia_cursando` ASC),
-  INDEX `fk_usuario_experiencia_profissional1_idx` (`fk_experiencia_profissional` ASC),
-  INDEX `fk_usuario_acesso1_idx` (`fk_acesso` ASC),
+  INDEX `fk_Usuario_contato_idx` (`fk_contato` ASC) ,
+  INDEX `fk_usuario_experiencia_concluida1_idx` (`fk_experiencia_concluida` ASC) ,
+  INDEX `fk_usuario_experiencia_cursando1_idx` (`fk_experiencia_cursando` ASC) ,
+  INDEX `fk_usuario_experiencia_profissional1_idx` (`fk_experiencia_profissional` ASC) ,
+  INDEX `fk_usuario_acesso1_idx` (`fk_acesso` ASC) ,
   CONSTRAINT `fk_Usuario_contato`
     FOREIGN KEY (`fk_contato`)
     REFERENCES `pdsi2`.`contato` (`id_contato`)
