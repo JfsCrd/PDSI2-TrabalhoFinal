@@ -76,7 +76,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         else if($acao === 'login'){
             $return_login = login($user, $pass);
-
             if($return_login === 1){
                 echo 'sucesso';
                 $_SESSION['usuario'] = $user;

@@ -6,6 +6,8 @@
     function registraUsuario ($nome, $sobrenome, $cpf, $data_nasc, $email_pessoal, $email_ufu, $telefone, $pais, $estado, $cidade, $cep, $rua, $numero, $bairro, $complemento, $formacao, $instituicao, $conclusao, $titulo, $formacaoEmCurso, $instituicaoEmCurso, $incio, $conclusaoEmCurso, $tituloEmCurso, $cargo, $empresa, $area, $salario, $local, $descricao, $usuario, $senha){ 
         include ("Model-DataBase.php");
 
+        $senha_cripto = password_hash($senha, PASSWORD_DEFAULT);
+
         $sql = "INSERT INTO contato (email_pessoal, email_ufu, telefone, pais, estado, cidade, rua,
                     numero, bairro, cep, complemento) VALUES ('$email_pessoal', '$email_ufu', '$telefone', '$pais', '$estado', '$cidade', '$rua', $numero, '$bairro', '$cep', '$complemento');";
 
@@ -27,7 +29,7 @@
         mysqli_query($conn, $sql);
         $id_experiencia_profissional = mysqli_insert_id($conn);
 
-        $sql = "INSERT INTO acesso (usuario, senha) VALUES ('$usuario', '$senha');";
+        $sql = "INSERT INTO acesso (usuario, senha) VALUES ('$usuario', '$senha_cripto');";
         
         mysqli_query($conn, $sql);
         $id_acesso = mysqli_insert_id($conn);
@@ -45,16 +47,16 @@
     function login($user, $pass){ //login
 
         include ("Model-DataBase.php");
-        
-        $sql = "SELECT * FROM acesso WHERE usuario = '$user' and senha = '$pass'";
+
+        $sql = "SELECT senha FROM acesso WHERE usuario = '$user'";
         $result = mysqli_query($conn, $sql);
-        
-        if (mysqli_num_rows($result) > 0)
-          $result_login = 1;
-      
-      else 
-          $result_login = 0;
-      
-      return $result_login;
+        $row = mysqli_fetch_assoc($result);
+        $hash = $row['senha'];
+
+        if (password_verify($pass, $hash))
+            return 1;
+        else 
+            return 0;
+
     }
 ?>
