@@ -1,5 +1,7 @@
 # Projeto-Final-PDSI2
 
+🏗️ Em construção 🏗️
+
 Este repositório contém arquivos referentes ao Projeto Final da disciplina de Projeto e Desenvolvimento de Software 2.
 
 ## O Projeto
