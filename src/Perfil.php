@@ -15,7 +15,7 @@ if (!isset($_SESSION['usuario'])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>PORTAL | ALUMNI FACOM</title>
+    <title>MEU PERFIL | ALUMNI FACOM</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -42,7 +42,7 @@ if (!isset($_SESSION['usuario'])) {
                         <span>Bem-vindo, <?php echo $_SESSION["usuario"]; ?></span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li><a class="dropdown-item" href="Perfil.php">Meu perfil</a></li>
+                            <li><a class="dropdown-item disabled" href="#">Meu perfil</a></li>
                             <div class="dropdown-divider"></div>
                             <li><a class="dropdown-item " role="button" id='botao-logout' style="color: red"
                                 href="Login.html">Sair</a></li>
@@ -55,43 +55,10 @@ if (!isset($_SESSION['usuario'])) {
     <div class="wrapper">
     <div class="content">
     <div>
-        <h1 style="color: #F8AB02; margin: 40px">Bem-vindo ao nosso portal alumni!</h1>
-        <p style="margin: 40px; font-size: 20px; text-align: justify">Aqui, você pode se conectar com seus colegas de turma e colegas de faculdade antigos, manter-se atualizado sobre as últimas notícias da faculdade e descobrir oportunidades de networking e emprego. Navegue pelo nosso site para ver fotos antigas, ler histórias inspiradoras de sucesso e contribuir com sua própria experiência.</p>
-
+        <h1 style="color: #F8AB02; margin: 40px">Meu Perfil</h1>
     </div>
 
-    <!-- Start: Ações -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="text-center">
-                    <i class="fas fa-search fa-3x"></i>
-                    <h3>Procurar</h3>
-                    <p>Encontre pessoas e crie conexões.</p>
-                    <a href="#" class="btn btn-primary btn-sm">Procurar</a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="text-center">
-                    <i class="fas fa-comments fa-3x"></i>
-                    <h3>Fórum</h3>
-                    <p>Compartilhe suas opiniões, perguntas e ideias.</p>
-                    <a href="#" class="btn btn-primary btn-sm">Ir para o fórum</a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="text-center">
-                    <i class="fas fa-briefcase fa-3x"></i>
-                    <h3>Oportunidades</h3>
-                    <p>Encontre oportunidades de emprego .</p>
-                    <a href="#" class="btn btn-primary btn-sm">Ver oportunidades</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-
-    <!-- End: Ações -->
+    
 
     <!-- Start: Footer Basic -->
     <footer class="footer-basic" style="padding-bottom: 15px;padding-top: 30px;">

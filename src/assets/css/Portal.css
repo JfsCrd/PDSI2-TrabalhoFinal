@@ -1,0 +1,27 @@
+html,
+body {
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+  /* igual à altura da janela do navegador */
+  margin-bottom: -80px;
+  /* altura do footer */
+}
+
+.content {
+  /* preenche a altura restante */
+  padding-bottom: 80px;
+  /* altura do footer */
+}
+
+.footer-basic {
+  /* fixa o footer no final da janela do navegador */
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  /* altura do footer */
+  background-color: #f2f2f2;
+  color: #333;
+}
