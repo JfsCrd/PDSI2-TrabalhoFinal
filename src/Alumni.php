@@ -42,7 +42,8 @@ if (!isset($_SESSION['usuario'])) {
                         <span>Bem-vindo, <?php echo $_SESSION["usuario"]; ?></span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li><a class="dropdown-item" href="Perfil.php">Meu perfil</a></li>
+                            <li><a class="dropdown-item" href="Alumni.php">Meu Perfil</a></li>
+                            <li><a class="dropdown-item" href="Editar-perfil.php">Editar Dados</a></li>
                             <div class="dropdown-divider"></div>
                             <li><a class="dropdown-item " role="button" id='botao-logout' style="color: red"
                                 href="Login.html">Sair</a></li>
