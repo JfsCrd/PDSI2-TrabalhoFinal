@@ -48,7 +48,7 @@ if (mysqli_stmt_execute($stmt)) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>MEU PERFIL | ALUMNI FACOM</title>
+    <title>Editar Dados | ALUMNI FACOM</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -80,7 +80,8 @@ if (mysqli_stmt_execute($stmt)) {
                             </span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li><a class="dropdown-item disabled" href="#">Meu perfil</a></li>
+                            <li><a class="dropdown-item" href="#">Meu perfil</a></li>
+                            <li><a class="dropdown-item disabled" href="#">Editar Dados</a></li>
                             <div class="dropdown-divider"></div>
                             <li><a class="dropdown-item " role="button" id='botao-logout' style="color: red"
                                     href="Login.html">Sair</a></li>
@@ -93,7 +94,7 @@ if (mysqli_stmt_execute($stmt)) {
     <div class="wrapper">
         <div class="content">
             <div>
-                <h1 style="color: #F8AB02; margin: 40px">Meu Perfil</h1>
+                <h1 style="color: #F8AB02; margin: 40px">Editar Dados</h1>
             </div>
 
             <div class="form" style="margin-left: 40px; margin-right:40px">
