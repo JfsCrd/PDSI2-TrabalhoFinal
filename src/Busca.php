@@ -30,12 +30,16 @@ if (!isset($_SESSION['usuario'])) {
 <body>
 
     <nav class="navbar navbar-light navbar-expand-md" style="background: #f2f2f2; font-family: Roboto;">
-        <div class="container-fluid"><a class="navbar-brand" href="#" style="margin-left: 45px;">ALUMNI FACOM
-                UFU</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span
-                    class="visually-hidden">Mudar navegação</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container-fluid">
+            <a class="navbar-brand disabled" style="margin-left: 45px;">ALUMNI FACOM UFU</a>
+            <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Mudar navegação</span><span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navcol-1" style="background: #f2f2f2;">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="Alumni.php">Início</a></li>
+                    <li class="nav-item"><a class="nav-link disabled" style="color:#212B58" href="Busca.php">Buscar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Fórum</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Oportunidades</a></li>
                 </ul>
                 <div class="ms-auto d-flex align-items-center" style="margin-right: 10px;">
                     <div class="dropdown ms-auto">
@@ -67,11 +71,11 @@ if (!isset($_SESSION['usuario'])) {
             <form method="get" action="" id="form-busca" style="margin:40px">
                 <div class="form-group">
                     <div class="input-group">
-                        <input type="text" class="form-control"
+                        <input type="text" class="form-control" style="border-radius:0px"
                             placeholder="Busque egressos por nome, sobrenome, data de conclusão ou instituição"
                             name="termo-busca" id="termo-busca">
                         <div class="input-group-append">
-                            <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+                            <button type="submit" class="btn btn-primary" style="border-radius:0px"><i class="fas fa-search"></i></button>
                         </div>
                     </div>
                 </div>

@@ -19,10 +19,10 @@ $html = ''; // inicializa a variável com uma string vazia
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $html .= '
-        <div class="card card-xs mb-1">
+        <div class="card card-xs mb-1" style="border-radius:0px">
             <div class="row no-gutters">
-                <div class="col-md-2" >
-                    <img src="data:image/jpeg;base64,' . base64_encode($row['foto']) . '" class="card-img" alt="Foto do usuário">
+                <div class="col-md-2">
+                    <img src="data:image/jpeg;base64,' . base64_encode($row['foto']) . '" class="card-img" alt="Foto do usuário" style="border-radius:0px">
                 </div>
                 <div class="col-md-10">
                     <div class="card-body">
