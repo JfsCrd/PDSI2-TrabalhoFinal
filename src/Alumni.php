@@ -30,15 +30,18 @@ if (!isset($_SESSION['usuario'])) {
 <body>
 
     <nav class="navbar navbar-light navbar-expand-md" style="background: #f2f2f2; font-family: Roboto;">
-        <div class="container-fluid"><a class="navbar-brand" href="#" style="margin-left: 45px;">ALUMNI FACOM
+        <div class="container-fluid"><a class="navbar-brand" href="Alumni.php" style="margin-left: 45px;">ALUMNI FACOM
                 UFU</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Mudar navegação</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1" style="background: #f2f2f2;">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="Alumni.php">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Busca.php">Buscar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Fórum</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Oportunidades</a></li>
                 </ul>
                 <div class="ms-auto d-flex align-items-center" style="margin-right: 10px;">
                     <div class="dropdown ms-auto">
-                        <a class="btn btn-secondary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="btn btn-secondary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 0%;">
                         <span>Bem-vindo, <?php echo $_SESSION["usuario"]; ?></span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -57,7 +60,7 @@ if (!isset($_SESSION['usuario'])) {
     <div class="content">
     <div>
         <h1 style="color: #F8AB02; margin: 40px">Bem-vindo ao nosso portal alumni!</h1>
-        <p style="margin: 40px; font-size: 20px; text-align: justify">Aqui, você pode se conectar com seus colegas de turma e colegas de faculdade antigos, manter-se atualizado sobre as últimas notícias da faculdade e descobrir oportunidades de networking e emprego. Navegue pelo nosso site para ver fotos antigas, ler histórias inspiradoras de sucesso e contribuir com sua própria experiência.</p>
+        <p style="margin: 40px; font-size: 18px; text-align: justify">Aqui, você pode se conectar com seus colegas de turma e colegas de faculdade antigos, manter-se atualizado sobre as últimas notícias da faculdade e descobrir oportunidades de networking e emprego. Navegue pelo nosso site para ver fotos antigas, ler histórias inspiradoras de sucesso e contribuir com sua própria experiência.</p>
 
     </div>
 
@@ -67,9 +70,9 @@ if (!isset($_SESSION['usuario'])) {
             <div class="col-md-4">
                 <div class="text-center">
                     <i class="fas fa-search fa-3x"></i>
-                    <h3>Procurar</h3>
+                    <h3>Busca</h3>
                     <p>Encontre pessoas e crie conexões.</p>
-                    <a href="#" class="btn btn-primary btn-sm">Procurar</a>
+                    <a href="Busca.php" class="btn btn-primary btn-sm">Procurar</a>
                 </div>
             </div>
             <div class="col-md-4">
