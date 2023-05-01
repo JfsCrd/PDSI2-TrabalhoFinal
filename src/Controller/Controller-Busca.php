@@ -11,7 +11,7 @@ $termo = $conn->real_escape_string($termo);
 // Realiza a busca no banco de dados
 $sql = "SELECT * FROM usuario
         JOIN experiencia_concluida ON experiencia_concluida.id_experiencia_concluida = usuario.fk_experiencia_concluida
-        WHERE nome LIKE '%$termo%' OR sobrenome LIKE '%$termo%' ORDER BY nome ASC";
+        WHERE nome LIKE '%$termo%' OR sobrenome LIKE '%$termo%' OR formacao LIKE '%$termo%' OR conclusao LIKE '%$termo%' ORDER BY nome ASC";
 $result = $conn->query($sql);
 
 // Exibe os resultados da busca
@@ -19,19 +19,21 @@ $html = ''; // inicializa a variável com uma string vazia
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $html .= '
-        <div class="card mb-3">
+        <div class="card card-xs mb-1">
             <div class="row no-gutters">
-                <div class="col-md-2">
-                    <img src="..." class="card-img" alt="...">
+                <div class="col-md-2" >
+                    <img src="data:image/jpeg;base64,' . base64_encode($row['foto']) . '" class="card-img" alt="Foto do usuário">
                 </div>
                 <div class="col-md-10">
                     <div class="card-body">
                         <h5 class="card-title">' . $row['nome'] . ' '.$row['sobrenome'] .'</h5>
                         <p class="card-text">' . $row['formacao'] . ', ' . $row['instituicao'] . ', ' . $row['conclusao'] .'</p>
+                        <div class="card-footer bg-transparent border-success">' . $row['resumo'] .'</div>
                     </div>
             </div>
         </div>
-        </div>';
+        </div>
+        </br>';
     }
 } else {
     $html = 'Nenhum resultado encontrado.';

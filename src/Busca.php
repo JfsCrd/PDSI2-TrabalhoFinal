@@ -60,45 +60,48 @@ if (!isset($_SESSION['usuario'])) {
     <div class="wrapper">
         <div class="content">
             <div>
-                <h1 style="color: #F8AB02; margin: 40px">Encontre alumnus!</h1>
+                <h1 style="color: #F8AB02; margin: 40px">Encontre egressos!</h1>
             </div>
 
-            <!-- Formulário de busca -->
+            <!-- Start: Campo de busca -->
             <form method="get" action="" id="form-busca" style="margin:40px">
                 <div class="form-group">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Pesquisar usuários" name="termo-busca" id="termo-busca">
+                        <input type="text" class="form-control"
+                            placeholder="Busque egressos por nome, sobrenome, data de conclusão ou instituição"
+                            name="termo-busca" id="termo-busca">
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
                         </div>
                     </div>
                 </div>
             </form>
+            <!-- End: Campo de Busca -->
 
-            <div id="resultados-busca" style="margin:40px"></div>
+            <!-- Start: Resultados -->
+            <div id="resultados-busca" style="margin:40px"> </div>
+            <!-- End: Resultados -->
 
-           
         </div>
-    </div>
+        </div>
 
-    <!-- Start: Footer Basic -->
-    <footer class="footer-basic" style="padding-bottom: 15px;padding-top: 30px;">
-        <ul class="list-inline">
-            <li class="list-inline-item"><a href="#">Início</a></li>
-            <li class="list-inline-item"></li>
-            <li class="list-inline-item"><a href="Institucional.html">Sobre</a></li>
-            <li class="list-inline-item"></li>
-            <li class="list-inline-item"><a href="Institucional.html">Política de Privacidade</a></li>
-        </ul>
-        <p class="copyright">FACOM | Universidade Federal de Uberlândia © 2023</p>
-    </footer><!-- End: Footer Basic -->
-    </div>
+        <!-- Start: Footer Basic -->
+        <footer class="footer-basic" style="position:relative;padding-bottom: 15px;padding-top: 30px;">
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Início</a></li>
+                <li class="list-inline-item"></li>
+                <li class="list-inline-item"><a href="Institucional.html">Sobre</a></li>
+                <li class="list-inline-item"></li>
+                <li class="list-inline-item"><a href="Institucional.html">Política de Privacidade</a></li>
+            </ul>
+            <p class="copyright">FACOM | Universidade Federal de Uberlândia © 2023</p>
+        </footer><!-- End: Footer Basic -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.js"></script>
     <script src="assets/js/Simple-Slider.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
     <script src="assets/js/Logout.js"></script>
     <script src="assets/js/Busca.js"></script>
 
