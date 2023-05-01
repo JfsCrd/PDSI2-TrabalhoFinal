@@ -31,7 +31,7 @@ if (!isset($_SESSION['usuario'])) {
 
     <nav class="navbar navbar-light navbar-expand-md" style="background: #f2f2f2; font-family: Roboto;">
         <div class="container-fluid">
-            <a class="navbar-brand disabled" style="margin-left: 45px;">ALUMNI FACOM UFU</a>
+            <a class="navbar-brand disabled" style="margin-left: 45px; cursor: default;">ALUMNI FACOM UFU</a>
             <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Mudar navegação</span><span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navcol-1" style="background: #f2f2f2;">
