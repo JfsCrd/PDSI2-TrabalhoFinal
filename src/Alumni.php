@@ -30,11 +30,13 @@ if (!isset($_SESSION['usuario'])) {
 <body>
 
     <nav class="navbar navbar-light navbar-expand-md" style="background: #f2f2f2; font-family: Roboto;">
-        <div class="container-fluid"><a class="navbar-brand" href="Alumni.php" style="margin-left: 45px;">ALUMNI FACOM
-                UFU</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Mudar navegação</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container-fluid">
+            <a class="navbar-brand disabled" style="margin-left: 45px; cursor: default;">ALUMNI FACOM UFU</a>
+            <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span  class="visually-hidden">Mudar navegação</span><span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navcol-1" style="background: #f2f2f2;">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="Alumni.php">Início</a></li>
+                    <li class="nav-item"><a class="nav-link disabled" style="color:#212B58" href="Alumni.php">Início</a></li>
                     <li class="nav-item"><a class="nav-link" href="Busca.php">Buscar</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Fórum</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Oportunidades</a></li>
@@ -72,7 +74,7 @@ if (!isset($_SESSION['usuario'])) {
                     <i class="fas fa-search fa-3x"></i>
                     <h3>Busca</h3>
                     <p>Encontre pessoas e crie conexões.</p>
-                    <a href="Busca.php" class="btn btn-primary btn-sm">Procurar</a>
+                    <a href="Busca.php" class="btn btn-primary btn-sm" style="border-radius:0px">Procurar</a>
                 </div>
             </div>
             <div class="col-md-4">
@@ -80,7 +82,7 @@ if (!isset($_SESSION['usuario'])) {
                     <i class="fas fa-comments fa-3x"></i>
                     <h3>Fórum</h3>
                     <p>Compartilhe suas opiniões, perguntas e ideias.</p>
-                    <a href="#" class="btn btn-primary btn-sm">Ir para o fórum</a>
+                    <a href="#" class="btn btn-primary btn-sm" style="border-radius:0px">Ir para o fórum</a>
                 </div>
             </div>
             <div class="col-md-4">
@@ -88,7 +90,7 @@ if (!isset($_SESSION['usuario'])) {
                     <i class="fas fa-briefcase fa-3x"></i>
                     <h3>Oportunidades</h3>
                     <p>Encontre oportunidades de emprego .</p>
-                    <a href="#" class="btn btn-primary btn-sm">Ver oportunidades</a>
+                    <a href="#" class="btn btn-primary btn-sm" style="border-radius:0px">Ver oportunidades</a>
                 </div>
             </div>
         </div>
