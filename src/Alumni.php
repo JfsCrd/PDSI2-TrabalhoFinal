@@ -82,7 +82,7 @@ if (!isset($_SESSION['usuario'])) {
                     <i class="fas fa-comments fa-3x"></i>
                     <h3>Fórum</h3>
                     <p>Compartilhe suas opiniões, perguntas e ideias.</p>
-                    <a href="#" class="btn btn-primary btn-sm" style="border-radius:0px">Ir para o fórum</a>
+                    <a href="Forum.php" class="btn btn-primary btn-sm" style="border-radius:0px">Ir para o fórum</a>
                 </div>
             </div>
             <div class="col-md-4">
