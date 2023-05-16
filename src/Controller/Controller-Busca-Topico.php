@@ -31,9 +31,8 @@ $termo = $_POST['termo'];
 $termo = $conn->real_escape_string($termo);
 
 // Realiza a busca no banco de dados
-$sql = "SELECT usuario.nome, usuario.sobrenome, topico.titulo, topico.conteudo, topico.assunto, topico.data FROM forum
-         JOIN topico ON topico.id_topico = forum.fk_topicos
-         JOIN usuario ON usuario.id_usuario = forum.fk_usuario
+$sql = "SELECT usuario.nome, usuario.sobrenome, topico.titulo, topico.conteudo, topico.assunto, topico.data FROM topico
+         JOIN usuario ON usuario.id_usuario = topico.fk_usuario
          WHERE titulo LIKE '%$termo%' OR  topico.assunto LIKE '%$termo%' OR topico.conteudo LIKE '%$termo%'
          ORDER BY titulo ASC";
 
