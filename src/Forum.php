@@ -16,22 +16,24 @@ if (!isset($_SESSION['usuario'])) {
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
    <title>FÓRUM | ALUMNI FACOM</title>
+   
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
-   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-   <link rel="stylesheet" href="assets/css/Footer-Basic.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/Footer-Basic.css">
+    <link rel="stylesheet" href="assets/css/Portal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.css">
    <link rel="stylesheet" href="assets/css/Portal.css">
    <link rel="stylesheet" href="assets/css/Modal-Criar-Topico.css">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.css">
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+   
+
    <!-- Edição de Markdown -->
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplemde@1.11.2/dist/simplemde.min.css">
-<script src="https://cdn.jsdelivr.net/npm/simplemde@1.11.2/dist/simplemde.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/simplemde@1.11.2/dist/simplemde.min.js"></script>
 
 
 </head>
@@ -75,17 +77,19 @@ if (!isset($_SESSION['usuario'])) {
       <div class="content">
          <div>
             <h1 style="color: #F8AB02; margin: 40px">Fórum</h1>
-            <p style="margin: 40px; font-size: 18px; text-align: justify">Compartilhe ideias e conecte-se a outros egressos!</p>
+            <p style="margin: 40px; font-size: 18px; text-align: justify">Compartilhe ideias e conecte-se a outros
+               egressos!</p>
          </div>
 
          <!-- Start: Botões -->
          <div class="row" style="margin-left: 30px">
             <div class="col-md-8">
-            <form method="get" action="" id="form-busca">
+               <form method="get" action="" id="form-busca">
                   <div class="form-group">
                      <div class="input-group">
                         <input type="text" class="form-control" style="border-radius:0px"
-                           placeholder="Busque tópicos por título, conteúdo ou assunto" name="termo-busca" id="termo-busca">
+                           placeholder="Busque tópicos por título, conteúdo ou assunto" name="termo-busca"
+                           id="termo-busca">
                         <div class="input-group-append">
                            <button type="submit" class="btn btn-primary" style="border-radius:0px">
                               <i class="fas fa-search"></i>
@@ -96,7 +100,8 @@ if (!isset($_SESSION['usuario'])) {
                </form>
             </div>
             <div class="col-md-2">
-               <button type="button" class="btn btn-success" style="border-radius:0px" data-toggle="modal" data-target="#novoTopicoModal" id="#btn-novo-topico">
+               <button type="button" class="btn btn-success" style="border-radius:0px" data-bs-toggle="modal"
+               data-bs-target="#novoTopicoModal" id="#btn-novo-topico">
                   <i class="fas fa-plus-square"></i> Criar novo tópico
                </button>
             </div>
@@ -109,78 +114,106 @@ if (!isset($_SESSION['usuario'])) {
          <!-- End: Botões -->
 
          <!-- Start: Modal -->
-         <div class="modal fade  bd-exemple-modal-lg" id="novoTopicoModal" tabindex="-1" role="dialog" aria-labelledby="novoTopicoModalLabel"
-            aria-hidden="true">
+         <div class="modal fade" id="novoTopicoModal" tabindex="-1" role="dialog"
+            aria-labelledby="novoTopicoModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                <div class="modal-content">
                   <div class="modal-header">
                      <h5 class="modal-title" id="novoTopicoModalLabel">
-                        <i class="fas fa-plus-square"></i> Criar Novo Tópico</h5>
-                     <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <i class="fas fa-plus-square"></i> Criar Novo Tópico
+                     </h5>
+                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fechar">
                         <span aria-hidden="true">&times;</span>
                      </button>
                   </div>
                   <div class="modal-body">
-                     <form>
+                     <form method="POST" action="" id="form-criar-topico">
                         <div class="form-group">
-                           <label for="area-conhecimento">Assunto:</label>
-                           <select class="form-control" id="area-conhecimento" name="area-conhecimento">
-                           <option value="">Selecione o assunto do tópico</option>
-                           <optgroup label="Ciência da Computação">
-                              <option value="algoritmos">Algoritmos e Estruturas de Dados</option>
-                              <option value="arquitetura">Arquitetura de Computadores</option>
-                              <option value="inteligencia">Inteligência Artificial</option>
-                              <option value="redes">Redes de Computadores</option>
-                              <option value="seguranca">Segurança da Informação</option>
-                              <option value="sistemas">Sistemas Distribuídos</option>
-                              <option value="teoria">Teoria da Computação</option>
-                           </optgroup>
-                           <optgroup label="Engenharia de Software">
-                              <option value="metodos">Métodos Ágeis</option>
-                              <option value="padroes">Padrões de Projeto</option>
-                              <option value="processos">Processos de Desenvolvimento de Software</option>
-                              <option value="qualidade">Qualidade de Software</option>
-                              <option value="teste">Teste de Software</option>
-                           </optgroup>
-                           <optgroup label="Banco de Dados">
-                              <option value="administracao">Administração de Banco de Dados</option>
-                              <option value="modelagem">Modelagem de Dados</option>
-                              <option value="sql">SQL e Bancos de Dados Relacionais</option>
-                              <option value="nosql">Bancos de Dados NoSQL</option>
-                           </optgroup>
-                           <optgroup label="Outros assuntos">
-                              <option value="diversos">Diversos</option>
-                              <option value="memorias">Memórias</option>
-                              <option value="outros">Outros</option>
-                           </optgroup>
+                           <label for="assunto">Assunto:</label>
+                           <select class="form-control" id="assunto" name="assunto" required>
+                              <option value="">Selecione o assunto do tópico</option>
+                              <optgroup label="Ciência da Computação">
+                                 <option value="Algoritmos e Estruturas de Dados">Algoritmos e Estruturas de Dados
+                                 </option>
+                                 <option value="Arquitetura de Computadores">Arquitetura de Computadores</option>
+                                 <option value="Inteligência Artificial">Inteligência Artificial</option>
+                                 <option value="Redes de Computadore">Redes de Computadores</option>
+                                 <option value="Segurança da Informação">Segurança da Informação</option>
+                                 <option value="Sistemas Distribuídos">Sistemas Distribuídos</option>
+                                 <option value="Teoria da Computação">Teoria da Computação</option>
+                              </optgroup>
+                              <optgroup label="Engenharia de Software">
+                                 <option value="Métodos Ágeis">Métodos Ágeis</option>
+                                 <option value="Padrões de Projeto">Padrões de Projeto</option>
+                                 <option value="Processos de Desenvolvimento de Software">Processos de Desenvolvimento
+                                    de Software</option>
+                                 <option value="Qualidade de Software">Qualidade de Software</option>
+                                 <option value="Teste de Software">Teste de Software</option>
+                              </optgroup>
+                              <optgroup label="Banco de Dados">
+                                 <option value="Administração de Banco de Dados">Administração de Banco de Dados
+                                 </option>
+                                 <option value="Modelagem de Dados">Modelagem de Dados</option>
+                                 <option value="SQL e Bancos de Dados Relacionais">SQL e Bancos de Dados Relacionais
+                                 </option>
+                                 <option value="Bancos de Dados NoSQL">Bancos de Dados NoSQL</option>
+                              </optgroup>
+                              <optgroup label="Outros assuntos">
+                                 <option value="Diversos">Diversos</option>
+                                 <option value="Memórias">Memórias</option>
+                                 <option value="Outros">Outros</option>
+                              </optgroup>
                            </select>
 
                         </div>
                         <div class="form-group">
                            <label for="titulo">Título:</label>
-                           <input type="text" class="form-control" id="titulo" name="titulo">
+                           <input type="text" class="form-control" id="titulo" name="titulo" required>
                         </div>
                         <div class="form-group">
                            <label for="conteudo">Conteúdo:</label>
                            <textarea name="conteudo" id="conteudo"></textarea>
                         </div>
+                        <input type="hidden" name="acao" value="criar">
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                           <button type="submit" class="btn btn-primary" id="btn-criar-topico">Criar Tópico</button>
+                        </div>
                      </form>
                   </div>
-                  <div class="modal-footer">
-                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                     <button type="button" class="btn btn-primary">Criar Tópico</button>
-                  </div>
+
                </div>
             </div>
          </div>
          <!-- End: Modal Novo Tópico -->
 
-        <!-- Start: Resultados -->
+         <!-- Start: Resultados -->
 
-        <div id="resultados-busca" style="margin:40px"></div>
+         <div id="resultados-busca" style="margin:40px">
+         <br/>
+         </div>
 
-        <!-- End: Resultados -->
-         
+         <!-- End: Resultados -->
+
+         <!-- Modal de sucesso -->
+         <div class="modal" id="modal-sucesso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title" id="exampleModalLabel">Sucesso!</h5>
+                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+                  <div class="modal-body">
+                     O tópico foi criado com sucesso!
+                  </div>
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                  </div>
+               </div>
+            </div>
+         </div>
 
       </div>
       <!-- Start: Footer Basic -->
@@ -195,13 +228,15 @@ if (!isset($_SESSION['usuario'])) {
          <p class="copyright">FACOM | Universidade Federal de Uberlândia © 2023</p>
       </footer><!-- End: Footer Basic -->
    </div>
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-   <script src="assets/js/bs-init.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.js"></script>
-   <script src="assets/js/Simple-Slider.js"></script>
+   <script src="assets/js/bs-init.js"></script>    
    <script src="assets/js/Logout.js"></script>
    <script src="assets/js/Novo-Topico.js"></script>
    <script src="assets/js/Busca-Topico.js"></script>
+   <script src="assets/js/Criar-Topico.js"></script>
    <!-- habilita a inserção de textos Markdown -->
    <script>var simplemde = new SimpleMDE({ element: document.getElementById("conteudo") });</script>
 
