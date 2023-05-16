@@ -38,7 +38,7 @@ if (!isset($_SESSION['usuario'])) {
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="Alumni.php">Início</a></li>
                     <li class="nav-item"><a class="nav-link disabled" style="color:#212B58" href="Busca.php">Buscar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Fórum</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Forum.php">Fórum</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Oportunidades</a></li>
                 </ul>
                 <div class="ms-auto d-flex align-items-center" style="margin-right: 10px;">
