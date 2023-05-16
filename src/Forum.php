@@ -159,7 +159,6 @@ if (!isset($_SESSION['usuario'])) {
                                  <option value="Bancos de Dados NoSQL">Bancos de Dados NoSQL</option>
                               </optgroup>
                               <optgroup label="Outros assuntos">
-                                 <option value="Diversos">Diversos</option>
                                  <option value="Memórias">Memórias</option>
                                  <option value="Outros">Outros</option>
                               </optgroup>
