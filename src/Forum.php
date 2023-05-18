@@ -24,7 +24,7 @@ if (!isset($_SESSION['usuario'])) {
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.css">
-   <link rel="stylesheet" href="assets/css/Modal-Criar-Topico.css">
+   <link rel="stylesheet" href="assets/css/Forum.css">
    <link rel="stylesheet" href="assets/css/Block-Ui.css">
    <!-- Edição de Markdown -->
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplemde@1.11.2/dist/simplemde.min.css">
@@ -70,9 +70,11 @@ if (!isset($_SESSION['usuario'])) {
    </nav>
    <div class="wrapper">
       <div class="content">
-         <div data-bss-parallax-bg="true" style="background-image: url(assets/img/Background-network.png); background-position: center; background-size: contain;">
-            <h1 style="color: #F8AB02; margin: 40px;">Fórum</h1>
-            <p style="color: #F2F2F2; margin: 40px; font-size: 18px; text-align: justify">Compartilhe ideias e conecte-se a outros egressos!</p>
+
+         <div class="parallax-bg">
+                <h1 style="color: #F8AB02; margin: 40px">Fórum!</h1>
+                <p style="color:#f2f2f2; margin-left: 40px; margin-right: 150px; font-size: 18px; text-align: justify;">Um espaço de conexão e troca para egressos: compartilhando experiências, insights e oportunidades.</p>
+
          </div>
 
          <!-- Start: Botões -->

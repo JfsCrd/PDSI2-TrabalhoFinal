@@ -1,0 +1,13 @@
+.modal-lg {
+   max-width: 80% !important; 
+ }
+
+
+ .parallax-bg {
+  background-image: url(../img/background-network.png);
+  background-position: center;
+  background-size: cover;
+  min-height: 195px; /* Ajuste a altura conforme necessário */
+  display: flex;
+  flex-direction: column;
+}
