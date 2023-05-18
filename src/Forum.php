@@ -70,14 +70,13 @@ if (!isset($_SESSION['usuario'])) {
    </nav>
    <div class="wrapper">
       <div class="content">
-         <div>
-            <h1 style="color: #F8AB02; margin: 40px">Fórum</h1>
-            <p style="margin: 40px; font-size: 18px; text-align: justify">Compartilhe ideias e conecte-se a outros
-               egressos!</p>
+         <div data-bss-parallax-bg="true" style="background-image: url(assets/img/Background-network.png); background-position: center; background-size: contain;">
+            <h1 style="color: #F8AB02; margin: 40px;">Fórum</h1>
+            <p style="color: #F2F2F2; margin: 40px; font-size: 18px; text-align: justify">Compartilhe ideias e conecte-se a outros egressos!</p>
          </div>
 
          <!-- Start: Botões -->
-         <div class="row" style="margin-left: 30px">
+         <div class="row" style="margin-left: 30px; padding-top: 14px;">
             <div class="col-md-8">
                <form method="GET" action="" id="form-busca">
                   <div class="form-group">
