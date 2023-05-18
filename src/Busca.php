@@ -63,12 +63,15 @@ if (!isset($_SESSION['usuario'])) {
     </nav>
     <div class="wrapper">
         <div class="content">
-            <div>
+        <div data-bss-parallax-bg="false"
+                style="background-image: url(assets/img/background.png);background-position: center;background-size: cover;">
                 <h1 style="color: #F8AB02; margin: 40px">Encontre egressos!</h1>
+                <p style="color:#f2f2f2; margin: 40px; margin-right: 150px; font-size: 18px; text-align: justify">Encontre seus colegas de turma e demais outros egressos.</p>
+
             </div>
 
             <!-- Start: Campo de busca -->
-            <form method="get" action="" id="form-busca" style="margin:40px">
+            <form method="GET" action="" id="form-busca" style="margin-left: 42px; padding-top: 14px;margin-right: 30px">
                 <div class="form-group">
                     <div class="input-group">
                         <input type="text" class="form-control" style="border-radius:0px"
@@ -80,6 +83,7 @@ if (!isset($_SESSION['usuario'])) {
                     </div>
                 </div>
             </form>
+            
             <!-- End: Campo de Busca -->
 
             <!-- Start: Resultados -->

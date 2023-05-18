@@ -3,7 +3,7 @@
 include("../Model/Model-Usuario.php");
 
 // Obtém o termo de busca enviado pelo usuário
-$termo = $_POST['termo'];
+$termo = $_GET['termo'];
 
 // Escapa o termo para evitar SQL injection
 $termo = $conn->real_escape_string($termo);
