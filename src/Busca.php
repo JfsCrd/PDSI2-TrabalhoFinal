@@ -91,15 +91,15 @@ if (!isset($_SESSION['usuario'])) {
 
         <!-- Start: Footer Basic -->
         <footer class="footer-basic" style="position:relative;padding-bottom: 15px;padding-top: 30px;">
-            <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Início</a></li>
-                <li class="list-inline-item"></li>
-                <li class="list-inline-item"><a href="Institucional.html">Sobre</a></li>
-                <li class="list-inline-item"></li>
-                <li class="list-inline-item"><a href="Institucional.html">Política de Privacidade</a></li>
-            </ul>
-            <p class="copyright">FACOM | Universidade Federal de Uberlândia © 2023</p>
-        </footer><!-- End: Footer Basic -->
+         <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Início</a></li>
+            <li class="list-inline-item"></li>
+            <li class="list-inline-item"><a href="Institucional.html">Sobre</a></li>
+            <li class="list-inline-item"></li>
+            <li class="list-inline-item"><a href="Institucional.html">Política de Privacidade</a></li>
+         </ul>
+         <p class="copyright">FACOM | Universidade Federal de Uberlândia © 2023</p>
+      </footer><!-- End: Footer Basic -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bs-init.js"></script>

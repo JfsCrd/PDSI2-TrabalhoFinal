@@ -25,7 +25,7 @@ $assunto_imagem_map = array(
 );
 
 // Obtém o termo de busca enviado pelo usuário
-$termo = $_POST['termo'];
+$termo = $_GET['termo'];
 
 // Escapa o termo para evitar SQL injection
 $termo = $conn->real_escape_string($termo);
@@ -57,7 +57,7 @@ else{
 $html = ''; // inicializa a variável com uma string vazia
 
 if ($result->num_rows > 0) {
-   $html .= '<small class="text-muted">Resultados encontrados: ' . mysqli_num_rows($result) . '</small>';
+   $html .= '<small class="text-muted">Resultados encontrados: ' . mysqli_num_rows($result) . '</small><br/>';
    while ($row = $result->fetch_assoc()) {
       $assunto = $row['assunto'];
       $conteudo = $row['conteudo'];

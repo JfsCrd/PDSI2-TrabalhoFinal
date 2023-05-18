@@ -18,19 +18,14 @@ if (!isset($_SESSION['usuario'])) {
    <title>FÓRUM | ALUMNI FACOM</title>
    
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="assets/css/Footer-Basic.css">
-    <link rel="stylesheet" href="assets/css/Portal.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.css">
-   <link rel="stylesheet" href="assets/css/Portal.css">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+   <link rel="stylesheet" href="assets/css/Footer-Basic.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.css">
    <link rel="stylesheet" href="assets/css/Modal-Criar-Topico.css">
-
-   
-
+   <link rel="stylesheet" href="assets/css/Block-Ui.css">
    <!-- Edição de Markdown -->
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplemde@1.11.2/dist/simplemde.min.css">
    <script src="https://cdn.jsdelivr.net/npm/simplemde@1.11.2/dist/simplemde.min.js"></script>
@@ -84,7 +79,7 @@ if (!isset($_SESSION['usuario'])) {
          <!-- Start: Botões -->
          <div class="row" style="margin-left: 30px">
             <div class="col-md-8">
-               <form method="get" action="" id="form-busca">
+               <form method="GET" action="" id="form-busca">
                   <div class="form-group">
                      <div class="input-group">
                         <input type="text" class="form-control" style="border-radius:0px"
@@ -101,7 +96,7 @@ if (!isset($_SESSION['usuario'])) {
             </div>
             <div class="col-md-2">
                <button type="button" class="btn btn-success" style="border-radius:0px" data-bs-toggle="modal"
-               data-bs-target="#novoTopicoModal" id="#btn-novo-topico">
+               data-bs-target="#modal-novo-topico" id="#btn-novo-topico">
                   <i class="fas fa-plus-square"></i> Criar novo tópico
                </button>
             </div>
@@ -114,17 +109,13 @@ if (!isset($_SESSION['usuario'])) {
          <!-- End: Botões -->
 
          <!-- Start: Modal -->
-         <div class="modal fade" id="novoTopicoModal" tabindex="-1" role="dialog"
-            aria-labelledby="novoTopicoModalLabel" aria-hidden="true">
+         <div class="modal fade" id="modal-novo-topico" tabindex="-1" role="dialog"
+            aria-labelledby="modal-novo-topicoLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                <div class="modal-content">
                   <div class="modal-header">
-                     <h5 class="modal-title" id="novoTopicoModalLabel">
-                        <i class="fas fa-plus-square"></i> Criar Novo Tópico
-                     </h5>
-                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fechar">
-                        <span aria-hidden="true">&times;</span>
-                     </button>
+                     <h5 class="modal-title" id="modal-novo-topicoLabel">Criar Novo Tópico</h5>
+                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
                      <form method="POST" action="" id="form-criar-topico">
@@ -175,8 +166,8 @@ if (!isset($_SESSION['usuario'])) {
                         </div>
                         <input type="hidden" name="acao" value="criar">
                         <div class="modal-footer">
-                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                           <button type="submit" class="btn btn-primary" id="btn-criar-topico">Criar Tópico</button>
+                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border-radius: 0px">Fechar</button>
+                           <button type="submit" class="btn btn-primary" id="btn-criar-topico" style="border-radius: 0px">Criar Tópico</button>
                         </div>
                      </form>
                   </div>
@@ -187,11 +178,10 @@ if (!isset($_SESSION['usuario'])) {
          <!-- End: Modal Novo Tópico -->
 
          <!-- Start: Resultados -->
-
-         <div id="resultados-busca" style="margin:40px">
-         <br/>
+         <div id="resultados-busca" class="resultados-busca" style="margin:40px; margin-bottom: 185px;">
+            <br/>
          </div>
-
+         
          <!-- End: Resultados -->
 
          <!-- Modal de sucesso -->
@@ -205,7 +195,7 @@ if (!isset($_SESSION['usuario'])) {
                      </button>
                   </div>
                   <div class="modal-body">
-                     O tópico foi criado com sucesso!
+                     O tópico foi criado com sucesso.
                   </div>
                   <div class="modal-footer">
                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -214,28 +204,55 @@ if (!isset($_SESSION['usuario'])) {
             </div>
          </div>
 
+         <!-- End: Modal de Sucesso -->
+
+         <!-- Modal de falha -->
+         <div class="modal" id="modal-falha" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title" id="exampleModalLabel">Falha!</h5>
+                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+                  <div class="modal-body">
+                     Ocorreu um erro ao criar o tópico. 
+                     <br/>
+                     Tente novamente.
+                  </div>
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- End: Modal de Falha -->
+
+      </div>
       </div>
       <!-- Start: Footer Basic -->
-      <footer class="footer-basic" style="padding-bottom: 15px;padding-top: 30px;">
-         <ul class="list-inline">
-            <li class="list-inline-item"><a href="#">Início</a></li>
-            <li class="list-inline-item"></li>
-            <li class="list-inline-item"><a href="Institucional.html">Sobre</a></li>
-            <li class="list-inline-item"></li>
-            <li class="list-inline-item"><a href="Institucional.html">Política de Privacidade</a></li>
-         </ul>
-         <p class="copyright">FACOM | Universidade Federal de Uberlândia © 2023</p>
-      </footer><!-- End: Footer Basic -->
-   </div>
+      <footer class="footer-basic" style="position:relative;padding-bottom: 15px;padding-top: 30px;">
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Início</a></li>
+                <li class="list-inline-item"></li>
+                <li class="list-inline-item"><a href="Institucional.html">Sobre</a></li>
+                <li class="list-inline-item"></li>
+                <li class="list-inline-item"><a href="Institucional.html">Política de Privacidade</a></li>
+            </ul>
+            <p class="copyright">FACOM | Universidade Federal de Uberlândia © 2023</p>
+        </footer><!-- End: Footer Basic -->
+   
 
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.js"></script>
+   <script src="assets/js/jquery.blockUI.js"></script>
    <script src="assets/js/bs-init.js"></script>    
    <script src="assets/js/Logout.js"></script>
-   <script src="assets/js/Novo-Topico.js"></script>
    <script src="assets/js/Busca-Topico.js"></script>
    <script src="assets/js/Criar-Topico.js"></script>
+   <script src="assets/js/Forum-Suave.js"></script>
    <!-- habilita a inserção de textos Markdown -->
    <script>var simplemde = new SimpleMDE({ element: document.getElementById("conteudo") });</script>
 
