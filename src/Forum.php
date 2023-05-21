@@ -74,7 +74,6 @@ if (!isset($_SESSION['usuario'])) {
          <div class="parallax-bg">
                 <h1 style="color: #F8AB02; margin: 40px">Fórum!</h1>
                 <p style="color:#f2f2f2; margin-left: 40px; margin-right: 150px; font-size: 18px; text-align: justify;">Um espaço de conexão e troca para egressos: compartilhando experiências, insights e oportunidades.</p>
-
          </div>
 
          <!-- Start: Botões -->

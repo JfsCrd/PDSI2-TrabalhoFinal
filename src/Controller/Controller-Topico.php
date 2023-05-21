@@ -5,21 +5,20 @@ session_start();
 include("../Model/Model-Topico.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
    $usuario = $_SESSION['usuario'];
 
-   //infos do post
-   $assunto = filter_input(INPUT_POST, "assunto");
-   $titulo = filter_input(INPUT_POST, "titulo");
-   $conteudo = filter_input(INPUT_POST, "conteudo");
+   // Infos do post
+   $assunto = filter_input(INPUT_POST, "assunto", FILTER_SANITIZE_STRING);
+   $titulo = filter_input(INPUT_POST, "titulo", FILTER_SANITIZE_STRING);
+   $conteudo = filter_input(INPUT_POST, "conteudo", FILTER_SANITIZE_STRING);
 
    $data = date("Y-m-d");
 
    $acao = $_POST['acao'];
-   //chamando a função de registro
 
    if ($acao === 'criar') {
 
+      // Pega o ID do usuário para vincular ao tópico
       $sql = "SELECT id_acesso
                FROM acesso 
                WHERE usuario = '$usuario'";
@@ -37,21 +36,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
          $resultado = mysqli_query($conn, $sql);
          $linha = mysqli_fetch_assoc($resultado);
 
-         if ($linha){
+         if ($linha) {
             $id_usuario = $linha['id_usuario'];
-            echo 'success';
-            $return_registro = criarTopico($assunto, $data, $conteudo, $titulo, $id_usuario);
-        } 
-        else
-         echo 'error';
-      }
-   
+            
+            // Obtém a URL do tópico recém-criado
+            $url_topico = strtolower(preg_replace('/[^a-zA-Z0-9]+/', '-', $titulo));
+
+            // Chamando a função de registro
+            $return_registro = criarTopico($assunto, $data, $conteudo, $titulo, $id_usuario, $url_topico);
+
+            if ($return_registro === true) {
+               // Obtém o ID do tópico recém-criado
+               $id_topico = mysqli_insert_id($conn);
+
+               // Atualiza o registro do tópico no banco de dados com a URL
+               $sql = "UPDATE topico SET url = '$url_topico' WHERE id_topico = '$id_topico'";
+               mysqli_query($conn, $sql);
+               
+               // Retorna uma resposta JSON com o status e a URL do tópico
+               $response = array(
+                  'status' => 'success',
+                  'topicUrl' => $url_topico
+               );
+               echo json_encode($response);
+            } 
+            else 
+               echo 'error';
+         } 
+         else 
+            echo 'error';
+      } 
       else 
          echo 'error';
-   }
-   else
+   } 
+   else 
       echo 'Nenhuma ação definida';
-   
 }
 
 ?>

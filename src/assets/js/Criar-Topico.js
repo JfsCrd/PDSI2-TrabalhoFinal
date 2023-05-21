@@ -2,30 +2,40 @@ $(document).ready(function() {
   $('#form-criar-topico').on('submit', function(event) {
     event.preventDefault(); // Impede o envio padrão do formulário
 
-    var formData = $(this).serialize(); // Serializa os dados do formulário
+    var formData = {
+      assunto: $('#assunto').val(),
+      titulo: $('#titulo').val(),
+      conteudo: $('#conteudo').val(),
+      acao: 'criar'
+    };
 
     $.ajax({
       type: 'POST',
       url: 'Controller/Controller-Topico.php',
       data: formData,
+      dataType: 'json',
       success: function(response) {
         console.log('Resposta do Ajax:', response);
-        // Processar a resposta após o envio do formulário
-        if (response === 'success') {
-          $('#modal-novo-topico').modal('hide'); // Fecha o modal 'modal-novo-topico'
-          $('#modal-sucesso').modal('show'); // Abre o modal 'modal-sucesso'
+        if (response.hasOwnProperty('status') && response.status.trim() === 'success') {
+          var topicUrl = response.topicUrl;
+          // Oculta o modal para criar um novo tópico
+          $('#modal-novo-topico').modal('hide');
+          // Exibir o modal de sucesso
+          $('#modal-sucesso').modal('show');
+          // Quando o modal for fechado
           $('#modal-sucesso').on('hidden.bs.modal', function() {
-            location.reload(); // Recarrega a página após o modal 'modal-sucesso' ser fechado
+            // Redirecionar para a página do tópico recém-criado
+            window.location.href = 'Topico.php?url=' + topicUrl;
           });
-        }
-        else {
-          $('#modal-novo-topico').modal('hide'); // Fecha o modal 'modal-novo-topico'
-          $('#modal-falha').modal('show'); // Abre o modal 'modal-falha'
+        } else {
+          $('#modal-novo-topico').modal('hide');
+          $('#modal-falha').modal('show');
           $('#modal-falha').on('hidden.bs.modal', function() {
-            location.reload(); // Recarrega a página após o modal 'modal-falha' ser fechado
+            location.reload();
           });
         }
       }
     });
+    
   });
 });
