@@ -21,7 +21,7 @@ function getTopicoURL($url) {
    include ("Model-DataBase.php");
    
    // Consulta o banco para obter o tópico com base na URL
-   $query = "SELECT topico.titulo, topico.data, topico.conteudo, usuario.nome, usuario.sobrenome, usuario.foto
+   $query = "SELECT topico.titulo, topico.id_topico, topico.data, topico.conteudo, usuario.nome, usuario.sobrenome, usuario.foto
                FROM topico 
                JOIN usuario on topico.fk_usuario = usuario.id_usuario
                WHERE url = '$url'";

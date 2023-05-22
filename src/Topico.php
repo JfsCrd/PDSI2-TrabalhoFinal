@@ -98,28 +98,112 @@ if (isset($_GET['url'])) {
 
 
          <!-- Start: Tópico -->
-         <div class="container-fluid" style="margin:40px;border-bottom: 1px solid #4b4c4d2c; padding-right:40px">
-            <div class="row">
-               <div class="col-md-2">
-                  <?php $imagemBytes = $topico['foto']; ?>
-                  <img src="data:image/jpeg;base64, <?php echo base64_encode($imagemBytes); ?>" class="card-img"
-                     alt="Foto do usuário" style="border-radius: 0px;">
-                  <h4 style="margin-top: 10px;">
-                     <?php echo $topico['nome'] . ' ' . $topico['sobrenome']; ?>
-                  </h4>
-                  <p style="font-size: 12px">Autor da publicação</p>
-               </div>
-               <div class="col-md-10">
-                  <h3> <?php echo $topico['titulo']; ?></h3>
-                  <p style="font-size: 12px">Publicado em: <?php echo $topico['data']; ?></p>
-                  <div class="post-content" style="margin-right: 40px; overflow-x: auto;">
-                  <?php echo $topico['conteudo']; ?>
-               </div>
+         <div class="wrapper" style="background-color: #F2F2F2; padding:1px">
+            <div class="container-fluid" style="margin:40px;border-bottom: 1px solid #4b4c4d2c; padding-right:40px; padding-bottom: 20px;">
+               <div class="row">
+                  <div class="col-md-2">
+                     <?php $imagemBytes = $topico['foto']; ?>
+                     <img src="data:image/jpeg;base64, <?php echo base64_encode($imagemBytes); ?>" class="card-img"
+                        alt="Foto do usuário" style="border-radius: 0px;">
+                     <h4 style="margin-top: 10px;">
+                        <?php echo $topico['nome'] . ' ' . $topico['sobrenome']; ?>
+                     </h4>
+                     <p style="font-size: 12px">Autor da publicação</p>
+                  </div>
+                  <div class="col-md-10">
+                     <h3> <?php echo $topico['titulo']; ?></h3>
+                     <p style="font-size: 12px">Publicado em: <?php echo $topico['data']; ?></p>
+                     <div class="post-content" style="margin-right: 40px; overflow-x: auto;">
+                     <?php echo $topico['conteudo']; ?>
+                  </div>
+                  </div>
                </div>
             </div>
          </div>
          <!-- End: Tópico -->
 
+         <!-- Start: Resultados -->
+         <div id="comentarios" style="margin:40px"></div>
+         <!-- End: Resultados -->
+
+         <!-- Start: Botão Comentar -->
+         <div class="container-fluid d-flex justify-content-end align-items-center" data-bs-toggle="modal" data-bs-target="#modal-novo-comentario" style="margin-top: 20px;">
+            <button class="btn btn-primary" style="border-radius: 0px; margin-right: 20px;" id="btn-comentar">Comentar</button>
+         </div>
+         <!-- End: Botão Comentar -->
+
+         <!-- Start: Modal de Novo Comentário -->
+         <div class="modal fade" id="modal-novo-comentario" tabindex="-1" role="dialog"
+            aria-labelledby="modal-novo-comentarioLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title" id="modal-novo-comentarioLabel">Comentar</h5>
+                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                     <form method="POST" action="" id="form-criar-comentario">
+                        <div class="form-group">
+                           <label for="conteudo">Comentário:</label>
+                           <textarea name="conteudo" id="conteudo"></textarea>
+                        </div>
+                        <input type="hidden" name="acao" value="comentar">
+                        <input type="hidden" name="id_post" id="id_post" value="<?php echo $topico['id_topico']; ?>">
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border-radius: 0px">Fechar</button>
+                           <button type="submit" class="btn btn-primary" id="btn-criar-topico" style="border-radius: 0px">Comentar</button>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- End: Modal Novo Comentário -->
+
+         <!-- Modal de sucesso -->
+         <div class="modal" id="modal-sucesso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title" id="exampleModalLabel">Sucesso!</h5>
+                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+                  <div class="modal-body">
+                     O comentário foi inserido com sucesso.
+                  </div>
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <!-- End: Modal de Sucesso -->
+
+         <!-- Modal de falha -->
+         <div class="modal" id="modal-falha" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title" id="exampleModalLabel">Falha!</h5>
+                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+                  <div class="modal-body">
+                     Ocorreu um erro ao comentar. 
+                     <br/>
+                     Tente novamente.
+                  </div>
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- End: Modal de Falha -->
 
       </div>
    </div>
@@ -142,6 +226,8 @@ if (isset($_GET['url'])) {
    <script src="assets/js/jquery.blockUI.js"></script>
    <script src="assets/js/bs-init.js"></script>
    <script src="assets/js/Logout.js"></script>
+   <script src="assets/js/Inserir-Comentario.js"></script>
+   <script src="assets/js/Exibir-Comentarios.js"></script>
    <!-- habilita a inserção de textos Markdown -->
    <script>var simplemde = new SimpleMDE({ element: document.getElementById("conteudo") });</script>
 
