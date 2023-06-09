@@ -7,6 +7,10 @@ if (!isset($_SESSION['usuario'])) {
    header('Location: login.html');
    exit();
 }
+
+include("Model/Model-Usuario.php");
+$nome = getNome($usuario);
+
 ?>
 
 <!DOCTYPE html>
@@ -44,16 +48,16 @@ if (!isset($_SESSION['usuario'])) {
          <div class="collapse navbar-collapse" id="navcol-1" style="background: #f2f2f2;">
             <ul class="navbar-nav">
                <li class="nav-item"><a class="nav-link" href="Alumni.php">Início</a></li>
-               <li class="nav-item"><a class="nav-link" href="Busca.php">Buscar</a></li>
+               <li class="nav-item"><a class="nav-link" href="Busca.php">Busca</a></li>
                <li class="nav-item"><a class="nav-link" disabled style="cursor: default;color:#212B58">Fórum</a></li>
-               <li class="nav-item"><a class="nav-link" href="#">Oportunidades</a></li>
+               <li class="nav-item"><a class="nav-link" href="Oportunidades.php">Oportunidades</a></li>
             </ul>
             <div class="ms-auto d-flex align-items-center" style="margin-right: 10px;">
                <div class="dropdown ms-auto">
                   <a class="btn btn-secondary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                      data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 0%;">
                      <span>Bem-vindo,
-                        <?php echo $_SESSION["usuario"]; ?>
+                        <?php echo $nome["nome"]; ?>
                      </span>
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">

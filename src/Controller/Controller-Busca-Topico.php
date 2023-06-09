@@ -1,5 +1,8 @@
 <?php
 
+// Oculta warnings de menos de 3 termos na consulta
+error_reporting(0);
+
 include("../Model/Model-Usuario.php");
 
 // Array associativo para imagens por assunto

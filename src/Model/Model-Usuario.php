@@ -91,4 +91,18 @@
         
     }
 
+    function getNome($usuario){
+        include ("Model-DataBase.php");
+
+        $query = "SELECT nome 
+                  FROM usuario 
+                  JOIN acesso ON acesso.id_acesso = usuario.fk_acesso 
+                  WHERE acesso.usuario = '$usuario'";
+
+        $result = mysqli_query($conn, $query);
+
+        $nome = mysqli_fetch_assoc($result);
+        return $nome;
+    }
+
 ?>

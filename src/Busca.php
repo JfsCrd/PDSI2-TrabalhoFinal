@@ -7,6 +7,9 @@ if (!isset($_SESSION['usuario'])) {
     header('Location: login.html');
     exit();
 }
+
+include("Model/Model-Usuario.php");
+$nome = getNome($usuario);
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +18,7 @@ if (!isset($_SESSION['usuario'])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Busca | ALUMNI FACOM</title>
+    <title>Busca de Egressos | ALUMNI FACOM</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -37,7 +40,7 @@ if (!isset($_SESSION['usuario'])) {
             <div class="collapse navbar-collapse" id="navcol-1" style="background: #f2f2f2;">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="Alumni.php">Início</a></li>
-                    <li class="nav-item"><a class="nav-link disabled" style="color:#212B58" href="Busca.php">Buscar</a></li>
+                    <li class="nav-item"><a class="nav-link disabled" style="color:#212B58" href="Busca.php">Busca</a></li>
                     <li class="nav-item"><a class="nav-link" href="Forum.php">Fórum</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Oportunidades</a></li>
                 </ul>
@@ -46,7 +49,7 @@ if (!isset($_SESSION['usuario'])) {
                         <a class="btn btn-secondary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                             data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 0%;">
                             <span>Bem-vindo,
-                                <?php echo $_SESSION["usuario"]; ?>
+                                <?php echo $nome['nome']; ?>
                             </span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -76,7 +79,7 @@ if (!isset($_SESSION['usuario'])) {
                     <div class="input-group">
                         <input type="text" class="form-control" style="border-radius:0px"
                             placeholder="Busque egressos por nome, sobrenome, data de conclusão ou instituição"
-                            name="termo-busca" id="termo-busca">
+                            name="termo-busca" id="termo-busca"/>
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-primary" style="border-radius:0px"><i class="fas fa-search"></i></button>
                         </div>
