@@ -11,6 +11,7 @@ $termo = $conn->real_escape_string($termo);
 // Realiza a busca no banco de dados
 $sql = "SELECT * FROM usuario
         JOIN experiencia_concluida ON experiencia_concluida.id_experiencia_concluida = usuario.fk_experiencia_concluida
+        JOIN acesso ON acesso.id_acesso = usuario.fk_acesso
         WHERE nome LIKE '%$termo%' OR sobrenome LIKE '%$termo%' OR formacao LIKE '%$termo%' OR conclusao LIKE '%$termo%' ORDER BY nome ASC";
 $result = $conn->query($sql);
 
@@ -26,7 +27,9 @@ if ($result->num_rows > 0) {
                 </div>
                 <div class="col-md-10">
                     <div class="card-body">
-                        <h5 class="card-title">' . $row['nome'] . ' '.$row['sobrenome'] .'</h5>
+                        <a href="http://localhost/Perfil.php?usuario='.$row['usuario'] .'" style="text-decoration: none;">
+                            <h5 class="card-title">' . $row['nome'] . ' '.$row['sobrenome'] .'</h5>
+                        </a>
                         <p class="card-text">' . $row['formacao'] . ', ' . $row['instituicao'] . ', ' . $row['conclusao'] .'</p>
                         <div class="card-footer bg-transparent border-success">' . $row['resumo'] .'</div>
                     </div>

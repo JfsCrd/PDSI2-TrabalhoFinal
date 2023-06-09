@@ -59,4 +59,36 @@
             return 0;
 
     }
+
+    // Busca Usuario 
+    function getUsuarioURL($url) {
+
+        include ("Model-DataBase.php");
+        
+        // Consulta o banco para obter o usuário com base na URL
+        $query = "SELECT usuario.*, experiencia_profissional.*, contato.*, acesso.usuario, experiencia_concluida.*, YEAR(experiencia_concluida.conclusao) as ano
+        FROM usuario
+        JOIN experiencia_profissional ON experiencia_profissional.id_experiencia_profissional = usuario.fk_experiencia_profissional
+        JOIN contato ON contato.id_contato = usuario.fk_contato
+        JOIN acesso ON acesso.id_acesso = usuario.fk_acesso
+        JOIN experiencia_concluida ON experiencia_concluida.id_experiencia_concluida = usuario.fk_experiencia_concluida
+        WHERE acesso.usuario = '$url'";
+    
+        $result = mysqli_query($conn, $query);
+    
+        // Verifique se a consulta foi bem-sucedida
+        if ($result && mysqli_num_rows($result) > 0) {
+            // Obtém os dados do usuário do resultado da consulta
+            $usuario = mysqli_fetch_assoc($result);
+            return $usuario;
+        } 
+        
+        else if($url === null)
+            return null;
+        
+        else 
+            return null; // usuário não encontrado
+        
+    }
+
 ?>
