@@ -27,6 +27,7 @@ $usuario = getUsuario($_SESSION['usuario']);
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.css">
    <link rel="stylesheet" href="assets/css/Footer-Basic.css">
+   <link rel="stylesheet" href="assets/css/Forum.css">
    <link rel="stylesheet" href="assets/css/Alterar-Dados.css">
 </head>
 
@@ -60,11 +61,13 @@ $usuario = getUsuario($_SESSION['usuario']);
     </nav>
     <div class="wrapper">
         <div class="content">
-            <div style="margin: 40px;">
-                <h1 style="color: #F8AB02;">Editar Dados</h1>
+
+            <div class="parallax-bg">
+                <h1 style="color: #F8AB02; margin: 40px">Editar dados!</h1>
+                <p style="color:#f2f2f2; margin-left: 40px; margin-right: 150px; font-size: 18px; text-align: justify;">Mantenha seus dados atualizados e aproveite as vantagens.</p>
             </div>
 
-            <div class="form" style="margin-left: 40px; margin-right:40px">
+            <div class="form" style="margin: 40px">
                 <form method="POST" action="" name="formUpdate "id="formUpdate" enctype="multipart/form-data">
                     <!-- Start: Dados Básicos -->
                     <div class='form-group'>
@@ -82,7 +85,7 @@ $usuario = getUsuario($_SESSION['usuario']);
                             </div>
                             <div class="col-md-3">
                                 <label for="inputMatricula">Matricula</label>
-                                <input type="text" class="form-control" name="matricula" disabled>
+                                <input type="text" class="form-control" name="matricula" value="<?php echo $usuario['id_usuario'];?>"disabled>
                             </div>
                         </div>
                         <div class="row mb-3">
