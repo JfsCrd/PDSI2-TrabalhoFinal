@@ -18,7 +18,7 @@ $(document).ready(function () {
             // Oculta o modal para criar um novo comentário
             window.location.replace('../Alumni.php');
           } else {
-            console.log(response)
+            alert("Falha. Revise seus dados de login e tente novamente");
           }
         }
       });
