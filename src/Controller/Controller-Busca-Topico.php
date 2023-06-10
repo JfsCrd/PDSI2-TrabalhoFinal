@@ -33,10 +33,12 @@ $termo = $_GET['termo'];
 // Escapa o termo para evitar SQL injection
 $termo = $conn->real_escape_string($termo);
 
-// Realiza a busca no banco de dados
+// Recebe o usuário para busca de tópicos do usuário
+$nome = $_GET['usuario'];
 
+// Realiza a busca no banco de dados
 // Se não for passado nenhum parâmetro
-if($termo === ''){
+if($termo === '' and $nome === ''){
    $sql = "SELECT usuario.nome, usuario.sobrenome, topico.titulo, topico.conteudo,
             topico.assunto, topico.data, topico.url
             FROM topico
@@ -44,6 +46,16 @@ if($termo === ''){
             ORDER BY topico.data DESC, topico.id_topico DESC";
 
    $result = $conn->query($sql);
+}
+
+else if($nome != null){
+   $sql = "SELECT usuario.nome, usuario.sobrenome, topico.id_topico, topico.titulo, topico.conteudo, topico.assunto, topico.data 
+   FROM topico
+   JOIN usuario ON usuario.id_usuario = topico.fk_usuario
+   WHERE usuario.nome = '$nome'
+   ORDER BY topico.data DESC, topico.id_topico DESC";
+
+$result = $conn->query($sql);
 }
 
 // Caso haja parametros

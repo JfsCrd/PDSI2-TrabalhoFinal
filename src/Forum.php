@@ -90,7 +90,7 @@ $nome = getNome($usuario);
                            placeholder="Busque tópicos por título, conteúdo ou assunto" name="termo-busca"
                            id="termo-busca">
                         <div class="input-group-append">
-                           <button type="submit" class="btn btn-primary" style="border-radius:0px">
+                           <button type="submit" id="btn-busca" class="btn btn-primary" style="border-radius:0px" onclick="trocarBotao()">
                               <i class="fas fa-search"></i>
                            </button>
                         </div>
@@ -105,14 +105,14 @@ $nome = getNome($usuario);
                </button>
             </div>
             <div class="col-md-2" style="margin-left:-30px;">
-               <button type="button" class="btn btn-secondary" style="border-radius:0px">
+               <button type="button" class="btn btn-secondary" id="btn-meus" style="border-radius:0px" onclick="meusTopicos('<?php echo $nome['nome']; ?>')">
                   <i class="fas fa-user"></i> Acessar meus tópicos
                </button>
             </div>
          </div>
          <!-- End: Botões -->
 
-         <!-- Start: Modal -->
+         <!-- Start: Modal Novo Tópico -->
          <div class="modal fade" id="modal-novo-topico" tabindex="-1" role="dialog"
             aria-labelledby="modal-novo-topicoLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
@@ -185,7 +185,6 @@ $nome = getNome($usuario);
          <div id="resultados-busca" class="resultados-busca" style="margin:40px; margin-bottom: 185px;">
             <br/>
          </div>
-         
          <!-- End: Resultados -->
 
          <!-- Modal de sucesso -->
@@ -255,6 +254,7 @@ $nome = getNome($usuario);
    <script src="assets/js/bs-init.js"></script>    
    <script src="assets/js/Logout.js"></script>
    <script src="assets/js/Busca-Topico.js"></script>
+   <script src="assets/js/Busca-Topico-User.js"></script>
    <script src="assets/js/Criar-Topico.js"></script>
    <script src="assets/js/Forum-Suave.js"></script>
    <!-- habilita a inserção de textos Markdown -->
