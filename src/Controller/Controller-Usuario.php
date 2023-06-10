@@ -51,18 +51,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pass = filter_input(INPUT_POST,'password');
 
     //social
-    $foto_loc = $_FILES['foto']['tmp_name'];
-    $foto_tam = $_FILES['foto']['size'];
-    
-    if ($foto_loc != "none" && !empty($foto_loc)) {
-        $fp = fopen($foto_loc, "rb");
-        $foto = fread($fp, $foto_tam);
-        $foto = addslashes($foto);
-        fclose($fp);
-    } 
-    else 
-        $foto = '';
-
     $resumo = filter_input(INPUT_POST, 'resumo');
     $rede = filter_input(INPUT_POST, 'rede');
     $rede_url = filter_input(INPUT_POST, 'rede_url');
@@ -73,6 +61,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         //chamando a função de registro
         if($acao === 'registrar') {
+
+            $foto_loc = $_FILES['foto']['tmp_name'];
+            $foto_tam = $_FILES['foto']['size'];
+    
+            if ($foto_loc != "none" && !empty($foto_loc)) {
+                $fp = fopen($foto_loc, "rb");
+                $foto = fread($fp, $foto_tam);
+                $foto = addslashes($foto);
+                fclose($fp);
+            } 
+            else 
+                $foto = '';
+                
             $return_registro = registraUsuario($nome, $sobrenome, $matricula, $cpf, $data_nasc, $email_pessoal, $email_ufu, $telefone, $pais, $estado, $cidade, $cep, $rua, $numero, $bairro, $complemento, $formacao, $instituicao, $conclusao, $titulo, $cargo, $empresa, $area, $salario, $local, $descricao, $senha, $foto, $resumo, $rede, $rede_url);
 
             if ($return_registro) {
@@ -89,8 +90,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         else if($acao === 'login'){
             $return_login = login($user, $pass);
             if($return_login === 1){
-                echo 'sucesso';
                 $_SESSION['usuario'] = $user;
+                echo 'sucesso';
+
             }
             else 
                 echo 'falha';
@@ -98,6 +100,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         
         else if($acao === 'update'){
+            $foto_loc = $_FILES['foto']['tmp_name'];
+            $foto_tam = $_FILES['foto']['size'];
+    
+            if ($foto_loc != "none" && !empty($foto_loc)) {
+                $fp = fopen($foto_loc, "rb");
+                $foto = fread($fp, $foto_tam);
+                $foto = addslashes($foto);
+                fclose($fp);
+            } 
+            else 
+                $foto = '';
+
             $fk = getFksUsuario($id_usuario);          
             $return_update = editarUsuario($nome, $sobrenome, $data_nasc, $foto, $resumo, $email_pessoal, $telefone, $pais, $estado, $cidade, $cep, $rua, $numero, $bairro, $complemento, $formacao, $instituicao, $conclusao, $titulo, $cargo, $empresa, $area, $salario, $local, $descricao, $rede, $rede_url, $id_usuario, $fk['fk_contato'], $fk['fk_experiencia_concluida'], $fk['fk_experiencia_profissional']);
 
