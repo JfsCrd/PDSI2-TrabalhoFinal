@@ -50,7 +50,6 @@ if (isset($_GET['url'])) {
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplemde@1.11.2/dist/simplemde.min.css">
    <script src="https://cdn.jsdelivr.net/npm/simplemde@1.11.2/dist/simplemde.min.js"></script>
 
-
 </head>
 
 <body style="overflow-x: hidden;">
@@ -77,7 +76,8 @@ if (isset($_GET['url'])) {
                      </span>
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                     <li><a class="dropdown-item" href="Perfil.php?usuario=<?php echo $_SESSION['usuario'] ?>">Meu Perfil</a></li>
+                     <li><a class="dropdown-item" href="Perfil.php?usuario=<?php echo $_SESSION['usuario'] ?>">Meu
+                           Perfil</a></li>
                      <li><a class="dropdown-item" href="Editar-perfil.php">Editar Dados</a></li>
                      <div class="dropdown-divider"></div>
                      <li><a class="dropdown-item " role="button" id='botao-logout' style="color: red"
@@ -93,13 +93,14 @@ if (isset($_GET['url'])) {
 
          <div class="parallax-bg">
             <h1 style="color: #F8AB02; margin: 40px">Fórum!</h1>
-            <p style="color:#f2f2f2; margin-left: 40px; margin-right: 150px; font-size: 18px; text-align: justify;">Um espaço de conexão e troca para egressos: compartilhando experiências, insights e oportunidades.</p>
+            <p style="color:#f2f2f2; margin-left: 40px; margin-right: 150px; font-size: 18px; text-align: justify;">Um
+               espaço de conexão e troca para egressos: compartilhando experiências, insights e oportunidades.</p>
          </div>
-
 
          <!-- Start: Tópico -->
          <div class="wrapper" style="background-color: #F2F2F2; padding:1px">
-            <div class="container-fluid" style="margin:40px;border-bottom: 1px solid #4b4c4d2c; padding-right:40px; padding-bottom: 20px;">
+            <div class="container-fluid"
+               style="margin:40px;border-bottom: 1px solid #4b4c4d2c; padding-right:40px; padding-bottom: 20px;">
                <div class="row">
                   <div class="col-md-2">
                      <?php $imagemBytes = $topico['foto']; ?>
@@ -111,11 +112,15 @@ if (isset($_GET['url'])) {
                      <p style="font-size: 12px">Autor da publicação</p>
                   </div>
                   <div class="col-md-10">
-                     <h3> <?php echo $topico['titulo']; ?></h3>
-                     <p style="font-size: 12px">Publicado em: <?php echo $topico['data']; ?></p>
+                     <h3>
+                        <?php echo $topico['titulo']; ?>
+                     </h3>
+                     <p style="font-size: 12px">Publicado em:
+                        <?php echo $topico['data']; ?>
+                     </p>
                      <div class="post-content" style="margin-right: 40px; overflow-x: auto;">
-                     <?php echo $topico['conteudo']; ?>
-                  </div>
+                        <?php echo $topico['conteudo']; ?>
+                     </div>
                   </div>
                </div>
             </div>
@@ -127,8 +132,10 @@ if (isset($_GET['url'])) {
          <!-- End: Resultados -->
 
          <!-- Start: Botão Comentar -->
-         <div class="container-fluid d-flex justify-content-end align-items-center" data-bs-toggle="modal" data-bs-target="#modal-novo-comentario" style="margin-top: 20px;">
-            <button class="btn btn-primary" style="border-radius: 0px; margin-right: 20px;" id="btn-comentar">Comentar</button>
+         <div class="container-fluid d-flex justify-content-end align-items-center" data-bs-toggle="modal"
+            data-bs-target="#modal-novo-comentario" style="margin-top: 20px;">
+            <button class="btn btn-primary" style="border-radius: 0px; margin-right: 20px;"
+               id="btn-comentar">Comentar</button>
          </div>
          <!-- End: Botão Comentar -->
 
@@ -150,8 +157,10 @@ if (isset($_GET['url'])) {
                         <input type="hidden" name="acao" value="comentar">
                         <input type="hidden" name="id_post" id="id_post" value="<?php echo $topico['id_topico']; ?>">
                         <div class="modal-footer">
-                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border-radius: 0px">Fechar</button>
-                           <button type="submit" class="btn btn-primary" id="btn-criar-topico" style="border-radius: 0px">Comentar</button>
+                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                              style="border-radius: 0px">Fechar</button>
+                           <button type="submit" class="btn btn-primary" id="btn-criar-topico"
+                              style="border-radius: 0px">Comentar</button>
                         </div>
                      </form>
                   </div>
@@ -161,7 +170,8 @@ if (isset($_GET['url'])) {
          <!-- End: Modal Novo Comentário -->
 
          <!-- Modal de sucesso -->
-         <div class="modal" id="modal-sucesso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal" id="modal-sucesso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
                <div class="modal-content">
                   <div class="modal-header">
@@ -183,7 +193,8 @@ if (isset($_GET['url'])) {
          <!-- End: Modal de Sucesso -->
 
          <!-- Modal de falha -->
-         <div class="modal" id="modal-falha" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal" id="modal-falha" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
                <div class="modal-content">
                   <div class="modal-header">
@@ -193,8 +204,8 @@ if (isset($_GET['url'])) {
                      </button>
                   </div>
                   <div class="modal-body">
-                     Ocorreu um erro ao comentar. 
-                     <br/>
+                     Ocorreu um erro ao comentar.
+                     <br />
                      Tente novamente.
                   </div>
                   <div class="modal-footer">

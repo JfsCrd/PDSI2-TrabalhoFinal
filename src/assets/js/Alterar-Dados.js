@@ -14,22 +14,22 @@ $(document).ready(function () {
       processData: false,
       contentType: false,
       success: function (response) {
-          // Exibir o modal de sucesso
-          $('#modal-sucesso').modal('show');
-          $('#modal-sucesso').on('hidden.bs.modal', function () {
-            // Redirecionar para a página de editar dados novamente
-            window.location.href = 'Editar-Perfil.php';
-          });
+        // Exibir o modal de sucesso
+        $('#modal-sucesso').modal('show');
+        $('#modal-sucesso').on('hidden.bs.modal', function () {
+          // Redirecionar para a página de editar dados novamente
+          window.location.href = 'Editar-Perfil.php';
+        });
       },
-      error: function() {
-          // Exibir o modal de falha
-          console.log(response)
-          $('#modal-falha').modal('show');
-          $('#modal-falha').on('hidden.bs.modal', function () {
-            // Redirecionar para a página de editar dados novamente
-            window.location.href = 'Editar-Perfil.php';
-          });
-        }
+      error: function () {
+        // Exibir o modal de falha
+        console.log(response)
+        $('#modal-falha').modal('show');
+        $('#modal-falha').on('hidden.bs.modal', function () {
+          // Redirecionar para a página de editar dados novamente
+          window.location.href = 'Editar-Perfil.php';
+        });
+      }
     });
   });
 });

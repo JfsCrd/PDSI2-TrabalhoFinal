@@ -37,26 +37,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
          if ($linha) {
             $id_usuario = $linha['id_usuario'];
-            
+
             // Chamando a função de registro de comentário
             $return_registro = criarComentario($comentario, $id_usuario, $data, $id_topico);
 
-            if ($return_registro === true) 
+            if ($return_registro === true)
                echo 'success';
-            else 
+            else
                echo 'error';
-         } 
-         else 
+         } else
             echo 'error';
-      } 
-      else 
+      } else
          echo 'error';
-   } 
-   else 
+   } else
       echo 'Nenhuma ação definida';
-}
-
-else {
+} else {
    $url = $_GET['url'];
 
    $sql = "SELECT usuario.nome, usuario.sobrenome, usuario.foto, comentario.data, comentario.comentario, 
@@ -68,7 +63,6 @@ else {
          ORDER BY comentario.data DESC";
 
    $result = $conn->query($sql);
-
 
    // Exibe os resultados da busca
    $html = ''; // inicializa a variável com uma string vazia
@@ -86,9 +80,9 @@ else {
                   </h6>
                </div>
                <div class="col-md-10">
-                  <p style="font-size: 12px">Publicado em: '.$row['data']. '</p>
+                  <p style="font-size: 12px">Publicado em: ' . $row['data'] . '</p>
                   <div class="post-content" style="margin-right: 40px; overflow-x: auto;">
-                  '. $row['comentario'].'
+                  ' . $row['comentario'] . '
                </div>
                </div>
             </div>
@@ -96,9 +90,7 @@ else {
          <br/>
      ';
       }
-   } 
-   
-   else
+   } else
       $html = 'Esta publicação ainda não tem comentário. Que tal escrever um?';
 
    // Fecha a conexão com o banco de dados
@@ -107,6 +99,6 @@ else {
    // Retorna os resultados da busca como HTML
    echo $html;
 
-   }
+}
 
 ?>

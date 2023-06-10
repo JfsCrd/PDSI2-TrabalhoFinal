@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
    // Função para carregar os comentários através de AJAX
    function carregarComentarios() {
       // Recupera o valor do parâmetro "url" da URL
@@ -12,10 +12,10 @@ $(document).ready(function() {
             url: url
          },
          dataType: 'html',
-         success: function(response) {
+         success: function (response) {
             $('#comentarios').html(response);
          },
-         error: function() {
+         error: function () {
             $('#comentarios').html('Ocorreu um erro ao carregar os comentários.');
          }
       });

@@ -55,7 +55,8 @@ $nome = getNome($usuario);
                             </span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li><a class="dropdown-item" href="Perfil.php?usuario=<?php echo $_SESSION['usuario'] ?>">Meu Perfil</a></li>
+                            <li><a class="dropdown-item"
+                                    href="Perfil.php?usuario=<?php echo $_SESSION['usuario'] ?>">Meu Perfil</a></li>
                             <li><a class="dropdown-item" href="Editar-perfil.php">Editar Dados</a></li>
                             <div class="dropdown-divider"></div>
                             <li><a class="dropdown-item " role="button" id='botao-logout' style="color: red"
@@ -71,7 +72,9 @@ $nome = getNome($usuario);
             <div data-bss-parallax-bg="false"
                 style="background-image: url(assets/img/Institucional-Bg.png);background-position: center;background-size: cover;">
                 <h1 style="color: #F8AB02; margin: 40px">Bem-vindo ao nosso portal alumni!</h1>
-                <p style="color:#f2f2f2; margin: 40px; margin-right: 150px; font-size: 18px; text-align: justify">Conecte-se com colegas e fique atualizado sobre notícias, oportunidades e histórias inspiradoras da faculdade.</p>
+                <p style="color:#f2f2f2; margin: 40px; margin-right: 150px; font-size: 18px; text-align: justify">
+                    Conecte-se com colegas e fique atualizado sobre notícias, oportunidades e histórias inspiradoras da
+                    faculdade.</p>
 
             </div>
 
@@ -100,7 +103,8 @@ $nome = getNome($usuario);
                             <i class="fas fa-briefcase fa-3x"></i>
                             <h3>Oportunidades</h3>
                             <p>Encontre oportunidades de emprego .</p>
-                            <a href="Oportunidades.php" class="btn btn-primary btn-sm" style="border-radius:0px">Ver oportunidades</a>
+                            <a href="Oportunidades.php" class="btn btn-primary btn-sm" style="border-radius:0px">Ver
+                                oportunidades</a>
                         </div>
                     </div>
                 </div>
@@ -120,8 +124,6 @@ $nome = getNome($usuario);
         </ul>
         <p class="copyright">FACOM | Universidade Federal de Uberlândia © 2023</p>
     </footer><!-- End: Footer Basic -->
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bs-init.js"></script>

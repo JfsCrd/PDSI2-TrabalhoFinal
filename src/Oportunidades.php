@@ -80,7 +80,7 @@ $nome = getNome($usuario);
 
             </div>
 
-            <div class="form-group" style="margin: 40px;">
+            <div class="form-group" style="margin: 40px; margin-top: 0px; padding-top: 14px;">
                 <!-- Start: Campo de busca -->
                 <form method="GET" action="" id="form-busca">
                     <div class="row">

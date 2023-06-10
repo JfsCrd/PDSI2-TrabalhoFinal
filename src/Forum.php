@@ -20,7 +20,7 @@ $nome = getNome($usuario);
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
    <title>FÓRUM | ALUMNI FACOM</title>
-   
+
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -61,7 +61,8 @@ $nome = getNome($usuario);
                      </span>
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                     <li><a class="dropdown-item" href="Perfil.php?usuario=<?php echo $_SESSION['usuario'] ?>">Meu Perfil</a></li>
+                     <li><a class="dropdown-item" href="Perfil.php?usuario=<?php echo $_SESSION['usuario'] ?>">Meu
+                           Perfil</a></li>
                      <li><a class="dropdown-item" href="Editar-perfil.php">Editar Dados</a></li>
                      <div class="dropdown-divider"></div>
                      <li><a class="dropdown-item " role="button" id='botao-logout' style="color: red"
@@ -76,8 +77,9 @@ $nome = getNome($usuario);
       <div class="content">
 
          <div class="parallax-bg">
-                <h1 style="color: #F8AB02; margin: 40px">Fórum!</h1>
-                <p style="color:#f2f2f2; margin-left: 40px; margin-right: 150px; font-size: 18px; text-align: justify;">Um espaço de conexão e troca para egressos: compartilhando experiências, insights e oportunidades.</p>
+            <h1 style="color: #F8AB02; margin: 40px">Fórum!</h1>
+            <p style="color:#f2f2f2; margin-left: 40px; margin-right: 150px; font-size: 18px; text-align: justify;">Um
+               espaço de conexão e troca para egressos: compartilhando experiências, insights e oportunidades.</p>
          </div>
 
          <!-- Start: Botões -->
@@ -90,7 +92,8 @@ $nome = getNome($usuario);
                            placeholder="Busque tópicos por título, conteúdo ou assunto" name="termo-busca"
                            id="termo-busca">
                         <div class="input-group-append">
-                           <button type="submit" id="btn-busca" class="btn btn-primary" style="border-radius:0px" onclick="trocarBotao()">
+                           <button type="submit" id="btn-busca" class="btn btn-primary" style="border-radius:0px"
+                              onclick="trocarBotao()">
                               <i class="fas fa-search"></i>
                            </button>
                         </div>
@@ -100,12 +103,13 @@ $nome = getNome($usuario);
             </div>
             <div class="col-md-2">
                <button type="button" class="btn btn-success" style="border-radius:0px" data-bs-toggle="modal"
-               data-bs-target="#modal-novo-topico" id="#btn-novo-topico">
+                  data-bs-target="#modal-novo-topico" id="#btn-novo-topico">
                   <i class="fas fa-plus-square"></i> Criar novo tópico
                </button>
             </div>
             <div class="col-md-2" style="margin-left:-30px;">
-               <button type="button" class="btn btn-secondary" id="btn-meus" style="border-radius:0px" onclick="meusTopicos('<?php echo $nome['nome']; ?>')">
+               <button type="button" class="btn btn-secondary" id="btn-meus" style="border-radius:0px"
+                  onclick="meusTopicos('<?php echo $nome['nome']; ?>')">
                   <i class="fas fa-user"></i> Acessar meus tópicos
                </button>
             </div>
@@ -170,8 +174,10 @@ $nome = getNome($usuario);
                         </div>
                         <input type="hidden" name="acao" value="criar">
                         <div class="modal-footer">
-                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border-radius: 0px">Fechar</button>
-                           <button type="submit" class="btn btn-primary" id="btn-criar-topico" style="border-radius: 0px">Criar Tópico</button>
+                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                              style="border-radius: 0px">Fechar</button>
+                           <button type="submit" class="btn btn-primary" id="btn-criar-topico"
+                              style="border-radius: 0px">Criar Tópico</button>
                         </div>
                      </form>
                   </div>
@@ -183,12 +189,13 @@ $nome = getNome($usuario);
 
          <!-- Start: Resultados -->
          <div id="resultados-busca" class="resultados-busca" style="margin:40px; margin-bottom: 185px;">
-            <br/>
+            <br />
          </div>
          <!-- End: Resultados -->
 
          <!-- Modal de sucesso -->
-         <div class="modal" id="modal-sucesso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal" id="modal-sucesso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
                <div class="modal-content">
                   <div class="modal-header">
@@ -210,7 +217,8 @@ $nome = getNome($usuario);
          <!-- End: Modal de Sucesso -->
 
          <!-- Modal de falha -->
-         <div class="modal" id="modal-falha" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal" id="modal-falha" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
                <div class="modal-content">
                   <div class="modal-header">
@@ -220,8 +228,8 @@ $nome = getNome($usuario);
                      </button>
                   </div>
                   <div class="modal-body">
-                     Ocorreu um erro ao criar o tópico. 
-                     <br/>
+                     Ocorreu um erro ao criar o tópico.
+                     <br />
                      Tente novamente.
                   </div>
                   <div class="modal-footer">
@@ -233,25 +241,25 @@ $nome = getNome($usuario);
          <!-- End: Modal de Falha -->
 
       </div>
-      </div>
-      <!-- Start: Footer Basic -->
-      <footer class="footer-basic" style="position:relative;padding-bottom: 15px;padding-top: 30px;">
-            <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Início</a></li>
-                <li class="list-inline-item"></li>
-                <li class="list-inline-item"><a href="Institucional.html">Sobre</a></li>
-                <li class="list-inline-item"></li>
-                <li class="list-inline-item"><a href="Institucional.html">Política de Privacidade</a></li>
-            </ul>
-            <p class="copyright">FACOM | Universidade Federal de Uberlândia © 2023</p>
-        </footer><!-- End: Footer Basic -->
-   
+   </div>
+   <!-- Start: Footer Basic -->
+   <footer class="footer-basic" style="position:relative;padding-bottom: 15px;padding-top: 30px;">
+      <ul class="list-inline">
+         <li class="list-inline-item"><a href="#">Início</a></li>
+         <li class="list-inline-item"></li>
+         <li class="list-inline-item"><a href="Institucional.html">Sobre</a></li>
+         <li class="list-inline-item"></li>
+         <li class="list-inline-item"><a href="Institucional.html">Política de Privacidade</a></li>
+      </ul>
+      <p class="copyright">FACOM | Universidade Federal de Uberlândia © 2023</p>
+   </footer><!-- End: Footer Basic -->
+
 
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.js"></script>
    <script src="assets/js/jquery.blockUI.js"></script>
-   <script src="assets/js/bs-init.js"></script>    
+   <script src="assets/js/bs-init.js"></script>
    <script src="assets/js/Logout.js"></script>
    <script src="assets/js/Busca-Topico.js"></script>
    <script src="assets/js/Busca-Topico-User.js"></script>

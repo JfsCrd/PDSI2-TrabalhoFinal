@@ -3,7 +3,7 @@ function meusTopicos(usuario) {
    $.ajax({
       url: 'Controller/Controller-Busca-Topico.php',
       method: 'GET',
-      data: { usuario : usuario },
+      data: { usuario: usuario },
       success: function (result) {
          // Atualiza a página com os resultados da busca
          $('#resultados-busca').html(result);
@@ -29,14 +29,14 @@ function trocarBotao() {
    // Muda o placeholder da caixa de pesquisa e ativa o campo de busca
    $('#termo-busca').attr('placeholder', 'Busque tópicos por título, conteúdo ou assunto');
    $('#termo-busca').attr('disabled', false);
- 
+
    // Remove o ícone do botão
    $('#btn-busca i').removeClass('fas fa-undo');
- 
+
    // Adiciona o novo ícone ao botão
    $('#btn-busca i').addClass('fas fa-search');
 
    // Ativa o botão "Meus Tópicos"
    $('#btn-meus').attr('disabled', false);
- 
+
 }

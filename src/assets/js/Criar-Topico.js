@@ -1,5 +1,5 @@
-$(document).ready(function() {
-  $('#form-criar-topico').on('submit', function(event) {
+$(document).ready(function () {
+  $('#form-criar-topico').on('submit', function (event) {
     event.preventDefault(); // Impede o envio padrão do formulário
 
     var formData = {
@@ -14,7 +14,7 @@ $(document).ready(function() {
       url: 'Controller/Controller-Topico.php',
       data: formData,
       dataType: 'json',
-      success: function(response) {
+      success: function (response) {
         console.log('Resposta do Ajax:', response);
         if (response.hasOwnProperty('status') && response.status.trim() === 'success') {
           var topicUrl = response.topicUrl;
@@ -23,19 +23,19 @@ $(document).ready(function() {
           // Exibir o modal de sucesso
           $('#modal-sucesso').modal('show');
           // Quando o modal for fechado
-          $('#modal-sucesso').on('hidden.bs.modal', function() {
+          $('#modal-sucesso').on('hidden.bs.modal', function () {
             // Redirecionar para a página do tópico recém-criado
             window.location.href = 'Topico.php?url=' + topicUrl;
           });
         } else {
           $('#modal-novo-topico').modal('hide');
           $('#modal-falha').modal('show');
-          $('#modal-falha').on('hidden.bs.modal', function() {
+          $('#modal-falha').on('hidden.bs.modal', function () {
             location.reload();
           });
         }
       }
     });
-    
+
   });
 });

@@ -27,11 +27,11 @@ if ($result->num_rows > 0) {
                 </div>
                 <div class="col-md-10">
                     <div class="card-body">
-                        <a href="http://localhost/Perfil.php?usuario='.$row['usuario'] .'" style="text-decoration: none;">
-                            <h5 class="card-title">' . $row['nome'] . ' '.$row['sobrenome'] .'</h5>
+                        <a href="http://localhost/Perfil.php?usuario=' . $row['usuario'] . '" style="text-decoration: none;">
+                            <h5 class="card-title">' . $row['nome'] . ' ' . $row['sobrenome'] . '</h5>
                         </a>
-                        <p class="card-text">' . $row['formacao'] . ', ' . $row['instituicao'] . ', ' . $row['conclusao'] .'</p>
-                        <div class="card-footer bg-transparent border-success">' . $row['resumo'] .'</div>
+                        <p class="card-text">' . $row['formacao'] . ', ' . $row['instituicao'] . ', ' . $row['conclusao'] . '</p>
+                        <div class="card-footer bg-transparent border-success">' . $row['resumo'] . '</div>
                     </div>
             </div>
         </div>

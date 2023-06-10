@@ -1,10 +1,11 @@
 <?php
 
-require_once ("Model-DataBase.php");
+require_once("Model-DataBase.php");
 
 //inserir topico
-function criarTopico($assunto, $data, $conteudo, $titulo, $id_usuario, $url_topico){ 
-   include ("Model-DataBase.php");
+function criarTopico($assunto, $data, $conteudo, $titulo, $id_usuario, $url_topico)
+{
+   include("Model-DataBase.php");
 
    $sql = "INSERT INTO topico (assunto, conteudo, data, fk_usuario, titulo, url) 
             VALUES ('$assunto', '$conteudo', '$data', '$id_usuario', '$titulo', '$url_topico');";
@@ -16,10 +17,11 @@ function criarTopico($assunto, $data, $conteudo, $titulo, $id_usuario, $url_topi
 }
 
 // Busca URL 
-function getTopicoURL($url) {
+function getTopicoURL($url)
+{
 
-   include ("Model-DataBase.php");
-   
+   include("Model-DataBase.php");
+
    // Consulta o banco para obter o tópico com base na URL
    $query = "SELECT topico.titulo, topico.id_topico, topico.data, topico.conteudo, usuario.nome, usuario.sobrenome, usuario.foto
                FROM topico 
@@ -33,14 +35,11 @@ function getTopicoURL($url) {
       // Obtém os dados do tópico do resultado da consulta
       $topico = mysqli_fetch_assoc($result);
       return $topico;
-   } 
-   
-   else if($url === null)
+   } else if ($url === null)
       return null;
-   
-   else 
+   else
       return null; // Tópico não encontrado
-   
+
 }
 
 ?>

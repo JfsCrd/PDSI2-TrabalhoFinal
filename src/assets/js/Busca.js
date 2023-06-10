@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
   // Função para exibir o termo buscando na URL
   function exibirTermoBuscando() {
@@ -14,7 +14,7 @@ $(document).ready(function() {
       url: 'Controller/Controller-Busca.php',
       method: 'GET',
       data: { termo: termo },
-      success: function(result) {
+      success: function (result) {
         // Remove a mensagem de busca antes de atualizar a página com os resultados
         $('#resultados-busca').html('');
 
@@ -38,7 +38,7 @@ $(document).ready(function() {
   enviarRequisicao(termo);
 
   // Atualiza a página com os resultados da busca ao submeter o formulário
-  $('#form-busca').submit(function(event) {
+  $('#form-busca').submit(function (event) {
     // Previne que a página seja recarregada após a submissão do formulário
     event.preventDefault();
 

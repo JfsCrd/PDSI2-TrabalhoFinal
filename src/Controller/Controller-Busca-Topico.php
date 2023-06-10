@@ -38,26 +38,24 @@ $nome = $_GET['usuario'];
 
 // Realiza a busca no banco de dados
 // Se não for passado nenhum parâmetro
-if($termo === '' and $nome === ''){
+if ($termo === '' and $nome === '') {
    $sql = "SELECT usuario.nome, usuario.sobrenome, topico.*
             FROM topico
             JOIN usuario ON usuario.id_usuario = topico.fk_usuario
             ORDER BY topico.data DESC, topico.id_topico DESC";
    $result = $conn->query($sql);
-}
-
-else if($nome != null){
+} else if ($nome != null) {
    $sql = "SELECT usuario.nome, usuario.sobrenome, topico.*
    FROM topico
    JOIN usuario ON usuario.id_usuario = topico.fk_usuario
    WHERE usuario.nome = '$nome'
    ORDER BY topico.data DESC, topico.id_topico DESC";
 
-$result = $conn->query($sql);
+   $result = $conn->query($sql);
 }
 
 // Caso haja parametros
-else{
+else {
    $sql = "SELECT usuario.nome, usuario.sobrenome, topico.*
             FROM topico
             JOIN usuario ON usuario.id_usuario = topico.fk_usuario
@@ -79,7 +77,7 @@ if ($result->num_rows > 0) {
       if (strlen($conteudo) > 400) {
          $conteudo = substr($conteudo, 0, 400);
          $last_space = strrpos($conteudo, ' ');
-         $conteudo = substr($conteudo, 0, $last_space) . '... <a href="http://localhost/Topico.php?url='.$row['url'] .'">Ler mais</a>';
+         $conteudo = substr($conteudo, 0, $last_space) . '... <a href="http://localhost/Topico.php?url=' . $row['url'] . '">Ler mais</a>';
       }
       $html .= '
          <br/>
@@ -90,10 +88,10 @@ if ($result->num_rows > 0) {
                      </div>
                      <div class="col-md-10">
                            <div class="card-body">
-                              <a href="http://localhost/Topico.php?url='.$row['url'] .'" style="text-decoration: none;">
-                                 <h5 class="card-title">' . $row['titulo'] . ' <span style="font-size: 12px; color:#555555">  | '. $row['assunto'].'</span></h5>
+                              <a href="http://localhost/Topico.php?url=' . $row['url'] . '" style="text-decoration: none;">
+                                 <h5 class="card-title">' . $row['titulo'] . ' <span style="font-size: 12px; color:#555555">  | ' . $row['assunto'] . '</span></h5>
                               </a>
-                              <small class="text-muted">Por: ' . $row['nome'] . ' ' . $row['sobrenome'] . ', em '. $row['data'] . ' </small>
+                              <small class="text-muted">Por: ' . $row['nome'] . ' ' . $row['sobrenome'] . ', em ' . $row['data'] . ' </small>
                               <div class="card-footer bg-transparent" style="text-align: justify; margin-left:-20px"; >
                                     <p style="color: #696969;">' . $conteudo . '</p>
                               </div>

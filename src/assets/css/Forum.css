@@ -7,7 +7,7 @@
   background-image: url(../img/background-network.png);
   background-position: center;
   background-size: cover;
-  min-height: 195px; /* Ajuste a altura conforme necessário */
+  min-height: 195px;
   display: flex;
   flex-direction: column;
 }

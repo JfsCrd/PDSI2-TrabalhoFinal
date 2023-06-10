@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
          if ($linha) {
             $id_usuario = $linha['id_usuario'];
-            
+
             // Obtém a URL do tópico recém-criado
             $url_topico = strtolower(preg_replace('/[^a-zA-Z0-9]+/', '-', $titulo));
             $url_topico = $id_usuario . '-' . $url_topico;
@@ -53,24 +53,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                // Atualiza o registro do tópico no banco de dados com a URL
                $sql = "UPDATE topico SET url = '$url_topico' WHERE id_topico = '$id_topico'";
                mysqli_query($conn, $sql);
-               
+
                // Retorna uma resposta JSON com o status e a URL do tópico
                $response = array(
                   'status' => 'success',
                   'topicUrl' => $url_topico
                );
                echo json_encode($response);
-            } 
-            else 
+            } else
                echo 'error';
-         } 
-         else 
+         } else
             echo 'error';
-      } 
-      else 
+      } else
          echo 'error';
-   } 
-   else 
+   } else
       echo 'Nenhuma ação definida';
 }
 
