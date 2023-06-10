@@ -7,39 +7,10 @@ if (!isset($_SESSION['usuario'])) {
     header('Location: login.html');
     exit();
 }
-include("Model/Model-DataBase.php");
-// Define a consulta SQL
-$sql = "SELECT *
-        FROM usuario
-        JOIN acesso ON acesso.id_acesso = usuario.fk_acesso
-        JOIN contato ON contato.id_contato = usuario.fk_contato
-        JOIN experiencia_concluida ON experiencia_concluida.id_experiencia_concluida = usuario.fk_experiencia_concluida
-        JOIN experiencia_cursando ON experiencia_cursando.id_experiencia_cursando = usuario.fk_experiencia_cursando
-        JOIN experiencia_profissional ON experiencia_profissional.id_experiencia_profissional = usuario.fk_experiencia_profissional
-        WHERE acesso.usuario = ?";
+include("Model/Model-Usuario.php");
 
-// Prepara a consulta SQL
-$stmt = mysqli_prepare($conn, $sql);
+$usuario = getUsuario($_SESSION['usuario']);
 
-// Verifica se a preparação foi bem sucedida
-if (!$stmt) {
-    die("Falha na preparação da consulta: " . mysqli_error($conn));
-}
-
-// Atribui os valores aos parâmetros da consulta
-$id = $_SESSION['usuario'];
-mysqli_stmt_bind_param($stmt, "i", $id);
-
-// Executa a consulta
-if (mysqli_stmt_execute($stmt)) {
-    // Recupera os resultados da consulta
-    $result = mysqli_stmt_get_result($stmt);
-
-    // Recupera o usuário da tabela
-    $usuario = mysqli_fetch_assoc($result);
-} else {
-    die("Falha na execução da consulta: " . mysqli_error($conn));
-}
 ?>
 
 <!DOCTYPE html>
@@ -50,15 +21,13 @@ if (mysqli_stmt_execute($stmt)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Editar Dados | ALUMNI FACOM</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="assets/css/Footer-Basic.css">
-    <link rel="stylesheet" href="assets/css/Portal.css">
-    <link rel="stylesheet" href="assets/css/Alterar-Dados.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.css">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.css">
+   <link rel="stylesheet" href="assets/css/Footer-Basic.css">
+   <link rel="stylesheet" href="assets/css/Alterar-Dados.css">
 </head>
 
 <body>
@@ -75,16 +44,14 @@ if (mysqli_stmt_execute($stmt)) {
                     <div class="dropdown ms-auto">
                         <a class="btn btn-secondary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            <span>Bem-vindo,
-                                <?php echo $_SESSION["usuario"]; ?>
+                            <span>Bem-vindo, <?php echo $usuario["nome"]; ?>
                             </span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <li><a class="dropdown-item" href="#">Meu perfil</a></li>
                             <li><a class="dropdown-item disabled" href="#">Editar Dados</a></li>
                             <div class="dropdown-divider"></div>
-                            <li><a class="dropdown-item " role="button" id='botao-logout' style="color: red"
-                                    href="Login.html">Sair</a></li>
+                            <li><a class="dropdown-item " role="button" id='botao-logout' style="color: red" href="Login.html">Sair</a></li>
                         </ul>
                     </div>
                     </ul>
@@ -93,12 +60,12 @@ if (mysqli_stmt_execute($stmt)) {
     </nav>
     <div class="wrapper">
         <div class="content">
-            <div>
-                <h1 style="color: #F8AB02; margin: 40px">Editar Dados</h1>
+            <div style="margin: 40px;">
+                <h1 style="color: #F8AB02;">Editar Dados</h1>
             </div>
 
             <div class="form" style="margin-left: 40px; margin-right:40px">
-                <form method="POST" action="Controller/Controller-Usuario.php" id="formUpdate">
+                <form method="POST" action="" name="formUpdate "id="formUpdate">
                     <!-- Start: Dados Básicos -->
                     <div class='form-group'>
                         <h2>Informações Pessoais</h2>
@@ -191,7 +158,7 @@ if (mysqli_stmt_execute($stmt)) {
                     <!-- Start: Experiência Acadêmica -->
                     <div>
                         <h2>Experiência Acadêmica</h2>
-                        <h3 style="margin-top: 20px;">Última Experiência Concluída</h3>
+                        <h4 style="margin-top: 20px;">Última Experiência Concluída</h4>
                         <div class="row mb-3" id="v-pills-academica2">
                             <div class="col-md-4">
                                 <label for="inputCurso">Formação</label>
@@ -217,43 +184,13 @@ if (mysqli_stmt_execute($stmt)) {
                             </div>
                         </div>
                         </br>
-                        <h3 style="margin-top: 20px;">Experiência em Curso</h3>
-                        <div class="row mb-3">
-                            <div class="col-md-4">
-                                <label for="inputCurso">Formação</label>
-                                <input name="formacaoEmCurso" type="text" class="form-control" value="<?php echo $usuario['formacao'];?>" onchange="campoAlterado(this);">
-                            </div>
-                            <div class="col-md-8">
-                                <label for="inputInstituicao">Instituição</label>
-                                <input name="instituicaoEmCurso" type="text" class="form-control" value="<?php echo $usuario['instituicao'];?>" onchange="campoAlterado(this);">
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-2">
-                                <label for="inputIncioEmCurso">Início</label>
-                                <input name="inicio" type="date" class="form-control" value="<?php echo $usuario['data_inicio'];?>"  onchange="campoAlterado(this);">
-                            </div>
-                            <div class="col-md-3">
-                                <label for="inputConclusaoEmCurso">Previsão de Conclusão</label>
-                                <input name="conclusaoEmCurso" type="date" class="form-control" value="<?php echo $usuario['data_fim'];?>" onchange="campoAlterado(this);">
-                            </div>
-                            <div class="col-md-7">
-                                <label for="inputTituloEmCurso">Título</label>
-                                <select name="tituloEmCurso" class="form-control" >
-                                <option selected><?php echo $usuario['experiencia_cursando.titulo'];?></option>
-                                    <option name="bacharelEmCurso">Bacharelado</option>
-                                    <select name="tituloEmCurso" class="form-control"></select>
-                            </div>
-                        </div>
-                        </br>
                     </div>
                     <!-- End: Experiência Acadêmica -->
 
                     <!-- Start: Experiência Profissinal -->
                     <div>
                         <h2 id="profissional" style="margin-top: 20px;">Experiência Profissional</h2>
-                        <h3 style="margin-top: 20px;">Última Experiência Profissional</h3>
+                        <h4 style="margin-top: 20px;">Última Experiência Profissional</h4>
                         <div class="row mb-3">
                             <div class="col-md-4">
                                 <label for="inputCargo">Cargo</label>
@@ -288,33 +225,87 @@ if (mysqli_stmt_execute($stmt)) {
                     </div>
                     <!-- End: Experiência Profissinal -->
 
-                    <!-- Start: Acesso -->
+                    <!-- Start: Social -->
                     <div>
-                        <h2 id="acesso" style="margin-top: 20px;">Alterar Senha</h2>
+                        <h2 id="profissional" style="margin-top: 20px;">Social</h2>
                         <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label for="inputFoto">Foto</label>
+                                <input name="inputFoto" type="file" accept="image/jpeg" class="form-control">
+                            </div>
+                            <div class="col-md-2">
+                                <label for="inputRede">Título do Site</label>
+                                <input name="rede" type="text" class="form-control" value="<?php echo $usuario['rede_social'];?>" onchange="campoAlterado(this);">
+                            </div>
                             <div class="col-md-6">
-                                <label for="inputSenhaAtual">Senha Atual</label>
-                                <input name="senhaAtual" id="senhaAtual" type="password" class="form-control">
+                                <label for="inputUrl">URL</label>
+                                <input name="rede_url" type="text" class="form-control" value="<?php echo $usuario['rede_social_url'];?>" onchange="campoAlterado(this);">
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <div class="col-md-3">
-                                <label for="inputSenhaNova" >Nova Senha</label>
-                                <input name="senhaNova" type="password" class="form-control" placeholder="12345">
-                            </div>
-                            <div class="col-md-3">
-                                <label for="inputSenhaNova2" >Confirme a senha</label>
-                                <input name="senhaNova2" type="password" class="form-control" placeholder="12345">
+                            <div class="col-md-12">
+                                <label for="inputResumo">Resumo Pessoal</label>
+                                <textarea class="form-control" name="resumo" row mb-3s="3" onchange="campoAlterado(this);"><?php echo $usuario['resumo'];?></textarea>
                             </div>
                         </div>
+                    </div>
+                    <!-- End: Social -->
+
+                    <!-- Start: Botão Submit -->
+                    <div>
                         </br>
                         <input type="hidden" name="acao" value="update">
+                        <input type="hidden" name="id_usuario" value="<?php echo $usuario['id_usuario'];?>">
                         <button type="submit" class="btn btn-primary"
                             style="margin-bottom: 50px;background: #212b58;border-radius: 0px;border-color: #212b58;">Atualizar Dados</button>
                     </div>
-                    <!-- End: Acesso -->
+                    <!-- End: Botão Submit -->
                 </form>
             </div>
+
+         <!-- Modal de sucesso -->
+         <div class="modal" id="modal-sucesso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title" id="exampleModalLabel">Sucesso!</h5>
+                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+                  <div class="modal-body">
+                     Dados alterados com sucesso!
+                  </div>
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- End: Modal de Sucesso -->
+
+         <!-- Modal de falha -->
+         <div class="modal" id="modal-falha" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title" id="exampleModalLabel">Falha!</h5>
+                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+                  <div class="modal-body">
+                     Ocorreu um erro ao alterar os dados. 
+                     <br/>
+                     Tente novamente.
+                  </div>
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- End: Modal de Falha -->
 
         </div>
     </div>
@@ -331,9 +322,9 @@ if (mysqli_stmt_execute($stmt)) {
     </footer>
     <!-- End: Footer Basic -->
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/bs-init.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.js"></script>
     <script src="assets/js/Simple-Slider.js"></script>
     <script src="assets/js/Logout.js"></script>
     <script src="assets/js/Alterar-Dados.js"></script>

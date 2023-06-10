@@ -2,7 +2,7 @@
 
     require_once ("Model-DataBase.php");
 
-    //inserir user
+    // Inserir Usuário
     function registraUsuario ($nome, $sobrenome, $cpf, $data_nasc, $email_pessoal, $email_ufu, $telefone, $pais, $estado, $cidade, $cep, $rua, $numero, $bairro, $complemento, $formacao, $instituicao, $conclusao, $titulo, $formacaoEmCurso, $instituicaoEmCurso, $incio, $conclusaoEmCurso, $tituloEmCurso, $cargo, $empresa, $area, $salario, $local, $descricao, $usuario, $senha){ 
         include ("Model-DataBase.php");
 
@@ -43,7 +43,60 @@
 
     }
 
-    //login usuário
+    function editarUsuario($nome, $sobrenome, $data_nasc, $foto, $resumo, $email_pessoal, $telefone, $pais, $estado, $cidade, $cep, $rua, $numero, $bairro, $complemento, $formacao, $instituicao, $conclusao, $titulo, $cargo, $empresa, $area, $salario, $local, $descricao, $rede, $rede_url, $id, $fk_contato, $fk_exp_acad, $fk_exp_prof){
+
+        include ("Model-DataBase.php");
+        $count = 0;
+
+        # USUÁRIO
+        $sql = "UPDATE usuario
+                SET nome = '$nome', sobrenome = '$sobrenome', data_nascimento = '$data_nasc', foto = '$foto', resumo = '$resumo'
+                WHERE usuario.id_usuario = '$id'";
+
+        $command = mysqli_query($conn, $sql);
+
+        if($command)
+            $count++;
+
+        # CONTATO
+        $sql = "UPDATE contato
+                SET telefone = '$telefone', pais = '$pais', estado = '$estado', cidade = '$cidade', cep = '$cep', rua = '$rua', numero = '$numero', bairro = '$bairro', complemento = '$complemento', email_pessoal = '$email_pessoal', rede_social = '$rede', rede_social_url = '$rede_url'
+                WHERE id_contato = '$fk_contato'";
+
+        $command = mysqli_query($conn, $sql);
+
+        if($command)
+            $count++;
+
+        # ACADÊMICA
+        $sql = "UPDATE experiencia_concluida
+        SET conclusao = '$conclusao', formacao = '$formacao', instituicao = '$instituicao', titulo = '$titulo'
+        WHERE id_experiencia_concluida = '$fk_exp_acad'";
+
+        $command = mysqli_query($conn, $sql);
+
+        if($command)
+            $count++;
+
+        # PROFISSINAL
+        $sql = "UPDATE experiencia_profissional
+                SET area = '$area', cargo = '$cargo', descricao = '$descricao', empresa = '$empresa', local = '$local', salario = '$salario'
+                WHERE id_experiencia_profissional = '$fk_exp_prof'";
+
+        $command = mysqli_query($conn, $sql);
+
+        if($command)
+            $count++;
+
+        if($command == 4)
+            return true;
+        
+        else
+            return 'error';
+        
+    }
+
+    // Login
     function login($user, $pass){ //login
 
         include ("Model-DataBase.php");
@@ -60,7 +113,7 @@
 
     }
 
-    // Busca Usuario 
+    // Busca Usuarios
     function getUsuarioURL($url) {
 
         include ("Model-DataBase.php");
@@ -91,10 +144,11 @@
         
     }
 
+    // Get nome do Usuário logado
     function getNome($usuario){
         include ("Model-DataBase.php");
 
-        $query = "SELECT nome 
+        $query = "SELECT nome
                   FROM usuario 
                   JOIN acesso ON acesso.id_acesso = usuario.fk_acesso 
                   WHERE acesso.usuario = '$usuario'";
@@ -103,6 +157,59 @@
 
         $nome = mysqli_fetch_assoc($result);
         return $nome;
+    }
+
+    // Get ID do Usuário logado
+    function getId($usuario){
+
+        include ("Model-DataBase.php");
+
+        $query = "SELECT id_usuario 
+                  FROM usuario 
+                  WHERE id_usuario = '$usuario'";
+
+        $result = mysqli_query($conn, $query);
+
+        $id = mysqli_fetch_assoc($result);
+        return $id;
+        
+    }
+
+    // Get Usuario
+    function getUsuario($id){
+
+        include ("Model-DataBase.php");
+
+        $query = "SELECT *
+                FROM usuario
+                JOIN acesso ON acesso.id_acesso = usuario.fk_acesso
+                JOIN contato ON contato.id_contato = usuario.fk_contato
+                JOIN experiencia_concluida ON experiencia_concluida.id_experiencia_concluida = usuario.fk_experiencia_concluida
+                JOIN experiencia_cursando ON experiencia_cursando.id_experiencia_cursando = usuario.fk_experiencia_cursando
+                JOIN experiencia_profissional ON experiencia_profissional.id_experiencia_profissional = usuario.fk_experiencia_profissional
+                WHERE acesso.usuario = '$id'";
+
+        $result = mysqli_query($conn, $query);
+
+        $usuario = mysqli_fetch_assoc($result);
+        return $usuario;
+
+    }
+
+    function getFksUsuario($id){
+
+        include ("Model-DataBase.php");
+
+        $query = "SELECT fk_contato, fk_experiencia_concluida, fk_experiencia_profissional 
+                  FROM usuario 
+                  WHERE id_usuario = '$id'";
+
+        $result = mysqli_query($conn, $query);
+
+        $fks = mysqli_fetch_assoc($result);
+        return $fks;
+
+
     }
 
 ?>

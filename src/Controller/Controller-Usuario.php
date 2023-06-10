@@ -56,7 +56,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = filter_input(INPUT_POST, 'username');
     $pass = filter_input(INPUT_POST,'password');
 
+    //social
+    $foto = filter_input(INPUT_POST, 'foto');
+    $resumo = filter_input(INPUT_POST, 'resumo');
+    $rede = filter_input(INPUT_POST, 'rede');
+    $rede_url = filter_input(INPUT_POST, 'rede_url');
+
     $acao = $_POST['acao'];
+    $id_usuario = filter_input(INPUT_POST, 'id_usuario');
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         //chamando a função de registro
@@ -86,7 +93,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         
         else if($acao === 'update'){
+
+            $fk = getFksUsuario($id_usuario);
             
+            $return_update = editarUsuario($nome, $sobrenome, $data_nasc, $foto, $resumo, $email_pessoal, $telefone, $pais, $estado, $cidade, $cep, $rua, $numero, $bairro, $complemento, $formacao, $instituicao, $conclusao, $titulo, $cargo, $empresa, $area, $salario, $local, $descricao, $rede, $rede_url, $id_usuario, $fk['fk_contato'], $fk['fk_experiencia_concluida'], $fk['fk_experiencia_profissional']);
+
+            if($return_update === true)
+                echo 'success';
+            
+            else
+                echo 'falha';
+
+
         }
     }
 
