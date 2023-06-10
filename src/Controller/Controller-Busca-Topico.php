@@ -39,17 +39,15 @@ $nome = $_GET['usuario'];
 // Realiza a busca no banco de dados
 // Se não for passado nenhum parâmetro
 if($termo === '' and $nome === ''){
-   $sql = "SELECT usuario.nome, usuario.sobrenome, topico.titulo, topico.conteudo,
-            topico.assunto, topico.data, topico.url
+   $sql = "SELECT usuario.nome, usuario.sobrenome, topico.*
             FROM topico
             JOIN usuario ON usuario.id_usuario = topico.fk_usuario
             ORDER BY topico.data DESC, topico.id_topico DESC";
-
    $result = $conn->query($sql);
 }
 
 else if($nome != null){
-   $sql = "SELECT usuario.nome, usuario.sobrenome, topico.id_topico, topico.titulo, topico.conteudo, topico.assunto, topico.data 
+   $sql = "SELECT usuario.nome, usuario.sobrenome, topico.*
    FROM topico
    JOIN usuario ON usuario.id_usuario = topico.fk_usuario
    WHERE usuario.nome = '$nome'
@@ -60,7 +58,7 @@ $result = $conn->query($sql);
 
 // Caso haja parametros
 else{
-   $sql = "SELECT usuario.nome, usuario.sobrenome, topico.id_topico, topico.titulo, topico.conteudo, topico.assunto, topico.data 
+   $sql = "SELECT usuario.nome, usuario.sobrenome, topico.*
             FROM topico
             JOIN usuario ON usuario.id_usuario = topico.fk_usuario
             WHERE titulo LIKE '%$termo%' OR  topico.assunto LIKE '%$termo%' OR topico.conteudo LIKE '%$termo%'

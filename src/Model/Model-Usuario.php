@@ -45,14 +45,30 @@
         $count = 0;
 
         # USUÁRIO
-        $sql = "UPDATE usuario
-                SET nome = '$nome', sobrenome = '$sobrenome', data_nascimento = '$data_nasc', foto = '$foto', resumo = '$resumo'
-                WHERE usuario.id_usuario = '$id'";
+        if($foto!=''){        
+            $sql = "UPDATE usuario
+                    SET nome = '$nome', sobrenome = '$sobrenome', data_nascimento = '$data_nasc', foto = '$foto', resumo = '$resumo'
+                    WHERE usuario.id_usuario = '$id'";
+    
+            $command = mysqli_query($conn, $sql);
+    
+            if($command)
+                $count++;
+            
+        }
 
-        $command = mysqli_query($conn, $sql);
+        else{
+            $sql = "UPDATE usuario
+                    SET nome = '$nome', sobrenome = '$sobrenome', data_nascimento = '$data_nasc', resumo = '$resumo'
+                    WHERE usuario.id_usuario = '$id'";
+    
+            $command = mysqli_query($conn, $sql);
+    
+            if($command)
+                $count++;
+        }
 
-        if($command)
-            $count++;
+
 
         # CONTATO
         $sql = "UPDATE contato

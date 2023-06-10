@@ -77,7 +77,7 @@ if (isset($_GET['usuario'])) {
                      </span>
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                     <li><a class="dropdown-item" href="Alumni.php">Meu Perfil</a></li>
+                     <li><a class="dropdown-item" href="Perfil.php?usuario=<?php echo $_SESSION['usuario'] ?>">Meu Perfil</a></li>
                      <li><a class="dropdown-item" href="Editar-perfil.php">Editar Dados</a></li>
                      <div class="dropdown-divider"></div>
                      <li><a class="dropdown-item " role="button" id='botao-logout' style="color: red"
