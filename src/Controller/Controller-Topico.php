@@ -41,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             // Obtém a URL do tópico recém-criado
             $url_topico = strtolower(preg_replace('/[^a-zA-Z0-9]+/', '-', $titulo));
+            $url_topico = $id_usuario . '-' . $url_topico;
 
             // Chamando a função de registro
             $return_registro = criarTopico($assunto, $data, $conteudo, $titulo, $id_usuario, $url_topico);
