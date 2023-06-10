@@ -65,7 +65,7 @@ $usuario = getUsuario($_SESSION['usuario']);
             </div>
 
             <div class="form" style="margin-left: 40px; margin-right:40px">
-                <form method="POST" action="" name="formUpdate "id="formUpdate">
+                <form method="POST" action="" name="formUpdate "id="formUpdate" enctype="multipart/form-data">
                     <!-- Start: Dados Básicos -->
                     <div class='form-group'>
                         <h2>Informações Pessoais</h2>
@@ -229,10 +229,10 @@ $usuario = getUsuario($_SESSION['usuario']);
                     <div>
                         <h2 id="profissional" style="margin-top: 20px;">Social</h2>
                         <div class="row mb-3">
-                            <div class="col-md-4">
-                                <label for="inputFoto">Foto</label>
-                                <input name="inputFoto" type="file" accept="image/jpeg" class="form-control">
-                            </div>
+                        <div class="col-md-4">
+                        <label for="inputFoto">Foto</label>
+                        <input name="foto" id="foto" type="file" accept="image/jpeg" class="form-control">
+                    </div>
                             <div class="col-md-2">
                                 <label for="inputRede">Título do Site</label>
                                 <input name="rede" type="text" class="form-control" value="<?php echo $usuario['rede_social'];?>" onchange="campoAlterado(this);">

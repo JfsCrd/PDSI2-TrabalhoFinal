@@ -5,13 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Alumni Facom</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="assets/css/Footer-Basic.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.css">
     <link rel="stylesheet" href="assets/css/Form-cadastro.css">
 </head>
 
@@ -37,267 +38,251 @@
 
     </div>
     <!-- Start: Cadastro -->
-    <div class="row">
-        <div class="col-3">
-            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-sobre" role="tab" aria-controls="v-pills-sobre" aria-selected="true" style="border-radius: 0px;">Sobre Você</a>
-                <a class="nav-link" id="v-pills-academica-tab" data-toggle="pill" href="#v-pills-academica" role="tab" aria-controls="v-pills-academica" aria-selected="false" style="border-radius: 0px;">Acadêmico</a>
-                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false" style="border-radius: 0px;">Profissional</a>
-                <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false" style="border-radius: 0px;">Acesso</a>
-            </div>
-        </div>
-        <div class="col-9">
-            <form method="POST" action="Controller/Controller-Usuario.php" id="formRegistro">
-                <div class="tab-content" id="v-pills-tabContent" style="margin-right: 40px;">
-                    <!-- Start: Dados Básicos -->
-                    <div class="tab-pane fade show active" id="v-pills-sobre" role="tabpanel"
-                        aria-labelledby="v-pills-sobre-tab">
-                        <div>
-                            <h2>Informações Pessoais</h2>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label for="inputNome">Nome</label>
-                                <input name="nome" type="text" class="form-control" placeholder="José" required>
-                            </div>
-                            <div class="col-md-8">
-                                <label for="inputCpf">Sobrenome</label>
-                                <input name="sobrenome" type="text" class="form-control" placeholder="da Silva"  required>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <label for="inputCpf">CPF</label>
-                                <input name="cpf" type="number" class="form-control" placeholder="11111111111" required>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="inputNascimento">Data de Nascimento</label>
-                                <input name="nascimento" type="date" class="form-control" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="inputMatricula">Matricula</label>
-                                <input type="text" class="form-control" name="matricula" placeholder="00000AAA000" required>
-                            </div>
-                        </div>
+    <div style="margin-top: 20px; margin-left:40px; margin-right: 40px;">
+        <form method="POST" action="Controller/Controller-Usuario.php" id="formRegistro" enctype="multipart/form-data">
 
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label for="inputTelefone">Telefone</label>
-                                <input type="phone" class="form-control" name="telefone" placeholder="034999999999" required>
-                            </div>
-                            <div class="col-md-5">
-                                <label for="inputEmailPessoal">E-mail pessoal</label>
-                                <input type="email" class="form-control" name="emailPessoal"
-                                    placeholder="josedasilva@gmail.com" required>
-                            </div>
-                            <div class="col-md-5">
-                                <label for="inputEmailUfu">E-mail @ufu</label>
-                                <input type="email" class="form-control" name="emailUfu" id="emailUfu"
-                                    placeholder="josedasilva@ufu.br" required>
-                            </div>
-                        </div>
-                        </br>
-                        <h2>Endereço</h2>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <label for="inputPais">País</label>
-                                <select name="pais" class="form-control" required>
-                                    <option selected>Selecione o país</option>
-                                    <option name="br">Brasil</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3">
-                                <label id="inputEstado" for="inputEstado">Estado</label>
-                                <select name="estado" class="form-control" required>
-                                    <option selected>Selecione o estado</option>
-                                    <option name="mg">Minas Gerais</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="inputCidade">Cidade</label>
-                                <select name="cidade" class="form-control" required>
-                                    <option selected>Selecione a cidade</option>
-                                    <option name="br">Monte Carmelo</option>
-                                    <select id="cidade" class="form-control"></select>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="inputCep">CEP</label>
-                                <input name="cep" type="number" class="form-control" required>
-                            </div>
-                        </div>
+            <!-- Start: Dados Básicos -->
 
-                        <div class="row">
-                            <div class="col-md-5">
-                                <label for="inputRua">Rua</label>
-                                <input name="rua" type="text" class="form-control" placeholder="Abc do Def" required>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="inputBairro">Bairro</label>
-                                <input name="bairro" type="text" class="form-control" placeholder="Abc" required>
-                            </div>
-                            <div class="col-md-1">
-                                <label for="inputNumero">Número</label>
-                                <input name="numero" type="text" class="form-control" placeholder="1" required>
-                            </div>
-                            <div class="col-md-2">
-                                <label for="inputComplemento">Complemento</label>
-                                <input name="complemento" type="text" class="form-control" placeholder="APT0 01">
-                            </div>
-                        </div>
-                        </br>
-                        </div>
+            <div>
+                <h2>Informações Pessoais</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="inputNome">Nome</label>
+                        <input name="nome" type="text" class="form-control" placeholder="José" required>
                     </div>
-                    <!-- End: Dados Básicos -->
-
-                    <!-- Start: Experiência Acadêmica -->
-                    <div class="tab-pane fade" id="v-pills-academica" role="tabpanel" aria-labelledby="v-pills-academica-tab">
-                        <div>
-                        <h2>Experiência Acadêmica</h2>
-                        <h3 style="margin-top: 20px;">Última Experiência Concluída</h3>
-                        <div class="row" id="v-pills-academica2">
-                            <div class="col-md-4">
-                                <label for="inputCurso">Formação</label>
-                                <input name="formacao" type="text" class="form-control"
-                                    placeholder="Sistemas de Informação" required>
-                            </div>
-                            <div class="col-md-8">
-                                <label for="inputInstituicao">Instituição</label>
-                                <input name="instituicao" type="text" class="form-control"
-                                    placeholder="Universidade Federal de Uberlândia" required>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label for="inputConclusao">Conclusão</label>
-                                <input name="conclusao" type="date" class="form-control" required>
-                            </div>
-                            <div class="col-md-10">
-                                <label for="inputTitulo">Título</label>
-                                <select name="titulo" class="form-control" required>
-                                    <option selected>Selecione a titulação</option>
-                                    <option name="bacharel">Bacharelado</option>
-                                    <select name="titulo" class="form-control"></select>
-                            </div>
-                        </div>
-                        </br>
-                        <h3 style="margin-top: 20px;">Experiência em Curso</h3>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label for="inputCurso">Formação</label>
-                                <input name="formacaoEmCurso" type="text" class="form-control"
-                                    placeholder="Sistemas de Informação" required>
-                            </div>
-                            <div class="col-md-8">
-                                <label for="inputInstituicao">Instituição</label>
-                                <input name="instituicaoEmCurso" type="text" class="form-control"
-                                    placeholder="Universidade Federal de Uberlândia" required>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label for="inputIncioEmCurso">Início</label>
-                                <input name="inicio" type="date" class="form-control" required>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="inputConclusaoEmCurso">Previsão de Conclusão</label>
-                                <input name="conclusaoEmCurso" type="date" class="form-control" required>
-                            </div>
-                            <div class="col-md-7">
-                                <label for="inputTituloEmCurso">Título</label>
-                                <select name="tituloEmCurso" class="form-control" required>
-                                    <option selected>Selecione a titulação</option>
-                                    <option name="bacharelEmCurso">Bacharelado</option>
-                                    <select name="tituloEmCurso" class="form-control"></select>
-                            </div>
-                        </div>
-                        </br>
-                        </div>
+                    <div class="col-md-8">
+                        <label for="inputCpf">Sobrenome</label>
+                        <input name="sobrenome" type="text" class="form-control" placeholder="da Silva" required>
                     </div>
-                    <!-- End: Experiência Acadêmica -->
-
-                    <!-- Start: Experiência Profissinal -->
-                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
-                        aria-labelledby="v-pills-messages-tab">
-                        <div>
-                            <h2 id="profissional" style="margin-top: 20px;">Experiência Profissional</h2>
-                        <h3 style="margin-top: 20px;">Última Experiência Profissional</h3>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label for="inputCargo">Cargo</label>
-                                <input name="cargo" type="text" class="form-control"
-                                    placeholder="Analista de Banco de Dados">
-                            </div>
-                            <div class="col-md-4">
-                                <label for="inputEmpresa">Empresa</label>
-                                <input name="empresa" type="text" class="form-control" placeholder="Oracle">
-                            </div>
-                            <div class="col-md-4">
-                                <label for="inputArea">Área</label>
-                                <input name="area" type="text" class="form-control" placeholder="Engenharia de Dados">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label for="inputSalario">Salário</label>
-                                <input name="salario" type="number" class="form-control" placeholder="11300">
-                            </div>
-                            <div class="col-md-10">
-                                <label for="inputLocalizao">Local</label>
-                                <input name="local" type="text" class="form-control" placeholder="vancouver, Canadá">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label for="inputDescricao">Descrição</label>
-                                <textarea class="form-control" name="descricao" rows="3"></textarea>
-                            </div>
-                        </div>
-                        </br>
-                        </div>
-                    </div>
-                    <!-- End: Experiência Profissinal -->
-
-                    <!-- Start: Acesso -->
-                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                        <div>
-                            <h2 id="acesso" style="margin-top: 20px;">Dados de Acesso</h2>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="inputUsuario">Usuário</label>
-                                    <input name="usuario" id="usuarioUfu" type="text" class="form-control" disabled>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <label for="inputSenha" required>Senha</label>
-                                    <input name="senha" type="password" class="form-control" placeholder="12345">
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="inputSenha2" required>Confirme a senha</label>
-                                    <input name="senha2" type="password" class="form-control" placeholder="12345">
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <label for="inputTermos">
-                                        <input name="termos" type="checkbox" required> Aceito os termos de uso
-                                    </label>
-                                </div>
-                            </div>
-                            
-                            </br>
-                            <input type="hidden" name="acao" value="registrar">
-                            <button type="submit" class="btn btn-primary"
-                                style="margin-bottom: 50px;background: #212b58;border-radius: 0px;border-color: #212b58;">Cadastar</button>
-                        </div>
-                    </div>
-                    <!-- End: Acesso -->
                 </div>
-            </form>
-        </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="inputCpf">CPF</label>
+                        <input name="cpf" type="number" class="form-control" placeholder="11111111111" required
+                            minlength="11" maxlength="11">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="inputNascimento">Data de Nascimento</label>
+                        <input name="nascimento" type="date" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputMatricula">Matricula</label>
+                        <input type="text" class="form-control" id="matricula" name="matricula" placeholder="00000AAA000" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="inputTelefone">Telefone</label>
+                        <input type="phone" class="form-control" name="telefone" placeholder="034999999999" required>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="inputEmailPessoal">E-mail pessoal</label>
+                        <input type="email" class="form-control" name="emailPessoal" placeholder="josedasilva@gmail.com"
+                            required>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="inputEmailUfu">E-mail @ufu</label>
+                        <input type="email" class="form-control" name="emailUfu" id="emailUfu"
+                            placeholder="josedasilva@ufu.br" required>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <h2>Endereço</h2>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="inputPais">País</label>
+                        <select name="pais" class="form-control" required>
+                            <option selected>Selecione o país</option>
+                            <option name="br">Brasil</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label id="inputEstado" for="inputEstado">Estado</label>
+                        <select name="estado" class="form-control" required>
+                            <option selected>Selecione o estado</option>
+                            <option name="mg">Minas Gerais</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="inputCidade">Cidade</label>
+                        <select name="cidade" class="form-control" required>
+                            <option selected>Selecione a cidade</option>
+                            <option name="br">Monte Carmelo</option>
+                            <select id="cidade" class="form-control"></select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="inputCep">CEP</label>
+                        <input name="cep" type="number" class="form-control" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <label for="inputRua">Rua</label>
+                        <input name="rua" type="text" class="form-control" placeholder="Abc do Def" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputBairro">Bairro</label>
+                        <input name="bairro" type="text" class="form-control" placeholder="Abc" required>
+                    </div>
+                    <div class="col-md-1">
+                        <label for="inputNumero">Número</label>
+                        <input name="numero" type="text" class="form-control" placeholder="1" required>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="inputComplemento">Complemento</label>
+                        <input name="complemento" type="text" class="form-control" placeholder="APT0 01">
+                    </div>
+                </div>
+                <br>
+            </div>
+
+            <!-- End: Dados Básicos -->
+
+            <!-- Start: Experiência Acadêmica -->
+            <br>
+            <br>
+            <div>
+                <h2>Experiência Acadêmica</h2>
+                <h5 style="margin-top: 20px;">Última Experiência Concluída</h5>
+                <div class="row" id="v-pills-academica2">
+                    <div class="col-md-4">
+                        <label for="inputCurso">Formação</label>
+                        <input name="formacao" type="text" class="form-control" placeholder="Sistemas de Informação"
+                            required>
+                    </div>
+                    <div class="col-md-8">
+                        <label for="inputInstituicao">Instituição</label>
+                        <input name="instituicao" type="text" class="form-control"
+                            placeholder="Universidade Federal de Uberlândia" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="inputConclusao">Conclusão</label>
+                        <input name="conclusao" type="date" class="form-control" required>
+                    </div>
+                    <div class="col-md-10">
+                        <label for="inputTitulo">Título</label>
+                        <select name="titulo" class="form-control" required>
+                            <option selected>Selecione a titulação</option>
+                            <option name="bacharel">Bacharelado</option>
+                            <select name="titulo" class="form-control"></select>
+                    </div>
+                </div>
+                <br>
+                <br>
+            </div>
+
+            <!-- End: Experiência Acadêmica -->
+
+            <!-- Start: Experiência Profissinal -->
+            <div>
+                <h2 id="profissional" style="margin-top: 20px;">Experiência Profissional</h2>
+                <h5 style="margin-top: 20px;">Última Experiência Profissional</h5>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="inputCargo">Cargo</label>
+                        <input name="cargo" type="text" class="form-control" placeholder="Analista de Banco de Dados">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputEmpresa">Empresa</label>
+                        <input name="empresa" type="text" class="form-control" placeholder="Oracle">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputArea">Área</label>
+                        <input name="area" type="text" class="form-control" placeholder="Engenharia de Dados">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="inputSalario">Salário</label>
+                        <input name="salario" type="number" class="form-control" placeholder="11300">
+                    </div>
+                    <div class="col-md-10">
+                        <label for="inputLocalizao">Local</label>
+                        <input name="local" type="text" class="form-control" placeholder="vancouver, Canadá">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="inputDescricao">Descrição</label>
+                        <textarea class="form-control" name="descricao" rows="3"></textarea>
+                    </div>
+                </div>
+                <br>
+            </div>
+
+            <!-- End: Experiência Profissinal -->
+
+            <!-- Start: Acesso -->
+            <div>
+                <h2 id="acesso" style="margin-top: 20px;">Dados de Acesso</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="inputUsuario">Usuário</label>
+                        <input name="usuario" id="usuario" type="text" class="form-control" disabled>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputSenha" required>Senha</label>
+                        <input name="senha" type="password" class="form-control" placeholder="12345">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputSenha2" required>Confirme a senha</label>
+                        <input name="senha2" type="password" class="form-control" placeholder="12345">
+                    </div>
+                </div>
+            </div>
+            <!-- End: Acesso -->
+            <br>
+            <br>
+            <!-- Start: Social -->
+            <div>
+                <h2 id="profissional" style="margin-top: 20px;">Social</h2>
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="inputFoto">Foto</label>
+                        <input name="foto" id="foto" type="file" accept="image/jpeg" class="form-control">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="inputRede">Site</label>
+                        <select name="rede" class="form-control">
+                            <option selected>Selecione o Site</option>
+                            <option name="LinkedIn">LinkedIn</option>
+                            <option name="GitHub">GitHub</option>
+                            <option name="Behance">Behance</option>
+                            <select id="rede" class="form-control"></select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputUrl">URL</label>
+                        <input name="rede_url" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <label for="inputResumo">Resumo Pessoal</label>
+                        <textarea class="form-control" name="resumo" row mb-3s="3"
+                            onchange="campoAlterado(this);"></textarea>
+                    </div>
+                </div>
+            </div>
+            <!-- End: Social -->
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="inputTermos">
+                        <input name="termos" type="checkbox" required> Aceito os termos de uso
+                    </label>
+                </div>
+            </div>
+            <br>
+            <input type="hidden" name="acao" value="registrar">
+            <button type="submit" class="btn btn-primary"
+                style="margin-bottom: 50px;background: #212b58;border-radius: 0px;border-color: #212b58;">Cadastar</button>
+        </form>
     </div>
+
     <!-- End: Cadastro -->
 
     <!-- Start: Footer -->
@@ -316,17 +301,10 @@
         </ul>
         <p class="copyright">FACOM | Universidade Federal de Uberlândia © 2023</p>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.js"></script>
     <script src="assets/js/Cadastro.js"></script>
-
 
 </body>
 

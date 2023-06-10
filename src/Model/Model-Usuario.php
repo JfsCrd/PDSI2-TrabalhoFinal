@@ -3,13 +3,13 @@
     require_once ("Model-DataBase.php");
 
     // Inserir Usuário
-    function registraUsuario ($nome, $sobrenome, $cpf, $data_nasc, $email_pessoal, $email_ufu, $telefone, $pais, $estado, $cidade, $cep, $rua, $numero, $bairro, $complemento, $formacao, $instituicao, $conclusao, $titulo, $formacaoEmCurso, $instituicaoEmCurso, $incio, $conclusaoEmCurso, $tituloEmCurso, $cargo, $empresa, $area, $salario, $local, $descricao, $usuario, $senha){ 
+    function registraUsuario ($nome, $sobrenome, $matricula, $cpf, $data_nasc, $email_pessoal, $email_ufu, $telefone, $pais, $estado, $cidade, $cep, $rua, $numero, $bairro, $complemento, $formacao, $instituicao, $conclusao, $titulo, $cargo, $empresa, $area, $salario, $local, $descricao, $senha, $foto, $resumo, $rede, $rede_url){ 
         include ("Model-DataBase.php");
 
         $senha_cripto = password_hash($senha, PASSWORD_DEFAULT);
 
         $sql = "INSERT INTO contato (email_pessoal, email_ufu, telefone, pais, estado, cidade, rua,
-                    numero, bairro, cep, complemento) VALUES ('$email_pessoal', '$email_ufu', '$telefone', '$pais', '$estado', '$cidade', '$rua', $numero, '$bairro', '$cep', '$complemento');";
+                    numero, bairro, cep, complemento, rede_social, rede_social_url) VALUES ('$email_pessoal', '$email_ufu', '$telefone', '$pais', '$estado', '$cidade', '$rua', $numero, '$bairro', '$cep', '$complemento', '$rede', '$rede_url');";
 
         mysqli_query($conn, $sql);
         $id_contato = mysqli_insert_id($conn);
@@ -18,25 +18,21 @@
         
         mysqli_query($conn, $sql);
         $id_experiencia_concluida = mysqli_insert_id($conn);
-        
-        $sql = "INSERT INTO experiencia_cursando (formacao, instituicao, data_inicio, data_fim, titulo) VALUES ('$formacaoEmCurso', '$instituicaoEmCurso', '$incio', '$conclusaoEmCurso', '$tituloEmCurso');";
-        
-        mysqli_query($conn, $sql);
-        $id_experiencia_cursando = mysqli_insert_id($conn);
 
         $sql = "INSERT INTO experiencia_profissional (cargo, empresa, area, salario, local, descricao) VALUES ('$cargo', '$empresa', '$area', $salario, '$local', '$descricao');";
         
         mysqli_query($conn, $sql);
         $id_experiencia_profissional = mysqli_insert_id($conn);
 
-        $sql = "INSERT INTO acesso (usuario, senha) VALUES ('$usuario', '$senha_cripto');";
+        $sql = "INSERT INTO acesso (usuario, senha) VALUES ('$matricula', '$senha_cripto');";
         
         mysqli_query($conn, $sql);
         $id_acesso = mysqli_insert_id($conn);
 
-        $sql = "INSERT INTO usuario (id_usuario, nome, sobrenome, data_nascimento, fk_contato, fk_experiencia_concluida, fk_experiencia_cursando, fk_experiencia_profissional, fk_acesso)
-                VALUES ('$cpf', '$nome', '$sobrenome', '$data_nasc', $id_contato, $id_experiencia_concluida, $id_experiencia_cursando, $id_experiencia_profissional, $id_acesso);";
+        $sql = "INSERT INTO usuario (id_usuario, cpf, nome, sobrenome, data_nascimento, fk_contato, fk_experiencia_concluida, fk_experiencia_profissional, fk_acesso, resumo, foto)
+                VALUES ('$matricula', '$cpf', '$nome', '$sobrenome', '$data_nasc', $id_contato, $id_experiencia_concluida, $id_experiencia_profissional, $id_acesso, '$resumo', '$foto');";
 
+        
         $command = mysqli_query($conn, $sql);
 
         return $command;
@@ -185,7 +181,6 @@
                 JOIN acesso ON acesso.id_acesso = usuario.fk_acesso
                 JOIN contato ON contato.id_contato = usuario.fk_contato
                 JOIN experiencia_concluida ON experiencia_concluida.id_experiencia_concluida = usuario.fk_experiencia_concluida
-                JOIN experiencia_cursando ON experiencia_cursando.id_experiencia_cursando = usuario.fk_experiencia_cursando
                 JOIN experiencia_profissional ON experiencia_profissional.id_experiencia_profissional = usuario.fk_experiencia_profissional
                 WHERE acesso.usuario = '$id'";
 

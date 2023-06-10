@@ -12,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sobrenome = filter_input(INPUT_POST, "sobrenome");
     $cpf = filter_input(INPUT_POST, "cpf");
     $data_nasc = filter_input(INPUT_POST, "nascimento");
+    $matricula = filter_input(INPUT_POST, "matricula");
 
     //contato
     $email_pessoal = filter_input(INPUT_POST, "emailPessoal");
@@ -32,13 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $conclusao = filter_input(INPUT_POST, "conclusao");
     $titulo = filter_input(INPUT_POST, "titulo");
 
-    //em curso
-    $formacaoEmCurso = filter_input(INPUT_POST, "formacaoEmCurso");
-    $instituicaoEmCurso = filter_input(INPUT_POST, "instituicaoEmCurso");
-    $incio = filter_input(INPUT_POST, "incio");
-    $conclusaoEmCurso = filter_input(INPUT_POST, "conclusaoEmCurso");
-    $tituloEmCurso = filter_input(INPUT_POST, "tituloEmCurso");
-
 
     //exp profissional
     $cargo = filter_input(INPUT_POST, "cargo");
@@ -57,7 +51,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pass = filter_input(INPUT_POST,'password');
 
     //social
-    $foto = filter_input(INPUT_POST, 'foto');
+    $foto_loc = $_FILES['foto']['tmp_name'];
+    $foto_tam = $_FILES['foto']['size'];
+    
+    if ($foto_loc != "none" && !empty($foto_loc)) {
+        $fp = fopen($foto_loc, "rb");
+        $foto = fread($fp, $foto_tam);
+        $foto = addslashes($foto);
+        fclose($fp);
+    } 
+    else 
+        $foto = '';
+
     $resumo = filter_input(INPUT_POST, 'resumo');
     $rede = filter_input(INPUT_POST, 'rede');
     $rede_url = filter_input(INPUT_POST, 'rede_url');
@@ -68,11 +73,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         //chamando a função de registro
         if($acao === 'registrar') {
-            $return_registro = registraUsuario($nome, $sobrenome, $cpf, $data_nasc, $email_pessoal, $email_ufu, $telefone, $pais, $estado, $cidade, $cep, $rua, $numero, $bairro, $complemento, $formacao, $instituicao, $conclusao, $titulo, $formacaoEmCurso, $instituicaoEmCurso, $incio, $conclusaoEmCurso, $tituloEmCurso, $cargo, $empresa, $area, $salario, $local, $descricao, $usuario, $senha);
+            $return_registro = registraUsuario($nome, $sobrenome, $matricula, $cpf, $data_nasc, $email_pessoal, $email_ufu, $telefone, $pais, $estado, $cidade, $cep, $rua, $numero, $bairro, $complemento, $formacao, $instituicao, $conclusao, $titulo, $cargo, $empresa, $area, $salario, $local, $descricao, $senha, $foto, $resumo, $rede, $rede_url);
 
             if ($return_registro) {
-                echo "<script language ='javascript' type='text/javascript'> alert('Successo! Use seus dados de login para acessar a plataforma.'); window.location.href='/Login.html' </script>";
-                header('Location: /Login.html');
+                echo "<script language ='javascript' type='text/javascript'> alert('Successo! Bem vindo!'); window.location.href='/Alumni.php' </script>";
+                header('Location: /Alumni.php');
             } 
             
             else {
@@ -93,9 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         
         else if($acao === 'update'){
-
-            $fk = getFksUsuario($id_usuario);
-            
+            $fk = getFksUsuario($id_usuario);          
             $return_update = editarUsuario($nome, $sobrenome, $data_nasc, $foto, $resumo, $email_pessoal, $telefone, $pais, $estado, $cidade, $cep, $rua, $numero, $bairro, $complemento, $formacao, $instituicao, $conclusao, $titulo, $cargo, $empresa, $area, $salario, $local, $descricao, $rede, $rede_url, $id_usuario, $fk['fk_contato'], $fk['fk_experiencia_concluida'], $fk['fk_experiencia_profissional']);
 
             if($return_update === true)
