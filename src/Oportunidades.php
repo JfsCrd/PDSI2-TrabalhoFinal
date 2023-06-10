@@ -26,6 +26,7 @@ $nome = getNome($usuario);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/Footer-Basic.css">
     <link rel="stylesheet" href="assets/css/Portal.css">
+    <link rel="stylesheet" href="assets/css/Oportunidades.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.css">
@@ -37,14 +38,16 @@ $nome = getNome($usuario);
     <nav class="navbar navbar-light navbar-expand-md" style="background: #f2f2f2; font-family: Roboto;">
         <div class="container-fluid">
             <a class="navbar-brand disabled" style="margin-left: 45px; cursor: default;">ALUMNI FACOM UFU</a>
-            <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Mudar navegação</span><span class="navbar-toggler-icon"></span>
+            <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span
+                    class="visually-hidden">Mudar navegação</span><span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navcol-1" style="background: #f2f2f2;">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="Alumni.php">Início</a></li>
                     <li class="nav-item"><a class="nav-link" href="Busca.php">Busca</a></li>
                     <li class="nav-item"><a class="nav-link" href="Forum.php">Fórum</a></li>
-                    <li class="nav-item"><a class="nav-link disabled" style="color:#212B58" href="#">Oportunidades</a></li>
+                    <li class="nav-item"><a class="nav-link disabled" style="color:#212B58" href="#">Oportunidades</a>
+                    </li>
                 </ul>
                 <div class="ms-auto d-flex align-items-center" style="margin-right: 10px;">
                     <div class="dropdown ms-auto">
@@ -55,7 +58,8 @@ $nome = getNome($usuario);
                             </span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li><a class="dropdown-item" href="Perfil.php?usuario=<?php echo $_SESSION['usuario'] ?>">Meu Perfil</a></li>
+                            <li><a class="dropdown-item"
+                                    href="Perfil.php?usuario=<?php echo $_SESSION['usuario'] ?>">Meu Perfil</a></li>
                             <li><a class="dropdown-item" href="Editar-perfil.php">Editar Dados</a></li>
                             <div class="dropdown-divider"></div>
                             <li><a class="dropdown-item " role="button" id='botao-logout' style="color: red"
@@ -68,47 +72,66 @@ $nome = getNome($usuario);
     </nav>
     <div class="wrapper">
         <div class="content">
-        <div data-bss-parallax-bg="false"
+            <div data-bss-parallax-bg="false"
                 style="background-image: url(assets/img/background.png);background-position: center;background-size: cover;">
                 <h1 style="color: #F8AB02; margin: 40px">Encontre oportunidades!</h1>
-                <p style="color:#f2f2f2; margin: 40px; margin-right: 150px; font-size: 18px; text-align: justify">Encontre vagas e oportunidades de emprego.</p>
+                <p style="color:#f2f2f2; margin: 40px; margin-right: 150px; font-size: 18px; text-align: justify">
+                    Encontre vagas e oportunidades de emprego.</p>
 
             </div>
 
-            <!-- Start: Campo de busca -->
-            <form method="GET" action="" id="form-busca" style="margin-left: 42px; padding-top: 14px;margin-right: 30px">
-                <div class="form-group">
-                    <div class="input-group">
-                        <input type="text" class="form-control" style="border-radius:0px"
-                            placeholder="Busque área, título ou palavras-chave"
-                            name="termo-busca" id="termo-busca">
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-primary" style="border-radius:0px"><i class="fas fa-search"></i></button>
+            <div class="form-group" style="margin: 40px;">
+                <!-- Start: Campo de busca -->
+                <form method="GET" action="" id="form-busca">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <input type="text" class="form-control" style="border-radius:0px"
+                                    placeholder="Busque área, título ou palavras-chave" name="termo-busca"
+                                    id="termo-busca">
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="input-group">
+                                <input type="text" class="form-control" style="border-radius:0px"
+                                    placeholder="Filtre por localidade" name="termo-loc" id="termo-loc">
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <button type="submit" class="btn btn-primary" style="width: 100%; border-radius:0px">
+                                <i class="fas fa-search"></i>
+                            </button>
                         </div>
                     </div>
-                </div>
-            </form>
-            
+                </form>
+
+            </div>
+
             <!-- End: Campo de Busca -->
 
             <!-- Start: Resultados -->
             <div id="resultados-busca" style="margin:40px"> </div>
             <!-- End: Resultados -->
 
-        </div>
-        </div>
+            <div id="creditos" style="margin: 40px; text-align: center;">
+                <p>Vagas obtidas em:<a href="https://www.adzuna.com.br" style="text-decoration: none;" target="_blank">
+                        Adzuna.com</a> </p>
+            </div>
 
-        <!-- Start: Footer Basic -->
-        <footer class="footer-basic" style="position:relative;padding-bottom: 15px;padding-top: 30px;">
-         <ul class="list-inline">
+        </div>
+    </div>
+
+    <!-- Start: Footer Basic -->
+    <footer class="footer-basic" style="position:relative;padding-bottom: 15px;padding-top: 30px;">
+        <ul class="list-inline">
             <li class="list-inline-item"><a href="#">Início</a></li>
             <li class="list-inline-item"></li>
             <li class="list-inline-item"><a href="Institucional.html">Sobre</a></li>
             <li class="list-inline-item"></li>
             <li class="list-inline-item"><a href="Institucional.html">Política de Privacidade</a></li>
-         </ul>
-         <p class="copyright">FACOM | Universidade Federal de Uberlândia © 2023</p>
-      </footer><!-- End: Footer Basic -->
+        </ul>
+        <p class="copyright">FACOM | Universidade Federal de Uberlândia © 2023</p>
+    </footer><!-- End: Footer Basic -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
@@ -116,6 +139,7 @@ $nome = getNome($usuario);
     <script src="assets/js/Simple-Slider.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="assets/js/Logout.js"></script>
+    <script src="assets/js/Oportunidades.js"></script>
 
 </body>
 

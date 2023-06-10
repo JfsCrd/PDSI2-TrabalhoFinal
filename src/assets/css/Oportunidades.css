@@ -1,0 +1,12 @@
+.elemento-inline {
+   display: inline-block;
+   margin-right: 50px; /* Defina a margem desejada */
+   font-size: 14px;
+   color: dimgray;
+}
+
+.link{
+   text-align: end;
+   text-decoration: none;
+   margin-left: 90%;
+}
