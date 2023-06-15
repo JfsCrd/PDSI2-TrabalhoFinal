@@ -132,8 +132,7 @@ if (isset($_GET['url'])) {
          <!-- End: Resultados -->
 
          <!-- Start: Botão Comentar -->
-         <div class="container-fluid d-flex justify-content-end align-items-center" data-bs-toggle="modal"
-            data-bs-target="#modal-novo-comentario" style="margin-top: 20px;">
+         <div class="container-fluid d-flex justify-content-end align-items-center" style="margin-top: 20px;">
             <button class="btn btn-primary" style="border-radius: 0px; margin-right: 20px;"
                id="btn-comentar">Comentar</button>
          </div>
@@ -198,18 +197,20 @@ if (isset($_GET['url'])) {
             <div class="modal-dialog" role="document">
                <div class="modal-content">
                   <div class="modal-header">
-                     <h5 class="modal-title" id="exampleModalLabel">Falha!</h5>
+                     <h5 class="modal-title" id="exampleModalLabel" style="color: red;">Você não pode comentar!</h5>
                      <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fechar">
                         <span aria-hidden="true">&times;</span>
                      </button>
                   </div>
                   <div class="modal-body">
-                     Ocorreu um erro ao comentar.
-                     <br />
-                     Tente novamente.
+                     Para criar comentar em tópicos é necessário completar seu cadastro.
+                     <br>
+                     <br>
+                     <small><i>Clique no botão abaixo para ser redirecionado para a página de alterações de dados pessoais.</small>
                   </div>
                   <div class="modal-footer">
                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                     <button type="button" class="btn btn-primary"><a href="Editar-perfil.php" style="color: white; text-decoration: none;">Completar cadastro</a></button>
                   </div>
                </div>
             </div>

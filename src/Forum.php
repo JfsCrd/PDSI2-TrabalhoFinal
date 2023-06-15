@@ -102,8 +102,7 @@ $nome = getNome($usuario);
                </form>
             </div>
             <div class="col-md-2">
-               <button type="button" class="btn btn-success" style="border-radius:0px" data-bs-toggle="modal"
-                  data-bs-target="#modal-novo-topico" id="#btn-novo-topico">
+               <button type="button" class="btn btn-success" style="border-radius:0px" onclick=" verificarRespostaPHP()" id="#btn-novo-topico">
                   <i class="fas fa-plus-square"></i> Criar novo tópico
                </button>
             </div>
@@ -222,18 +221,20 @@ $nome = getNome($usuario);
             <div class="modal-dialog" role="document">
                <div class="modal-content">
                   <div class="modal-header">
-                     <h5 class="modal-title" id="exampleModalLabel">Falha!</h5>
+                     <h5 class="modal-title" id="exampleModalLabel" style="color: red;">Você não pode inserir tópicos!</h5>
                      <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fechar">
                         <span aria-hidden="true">&times;</span>
                      </button>
                   </div>
                   <div class="modal-body">
-                     Ocorreu um erro ao criar o tópico.
-                     <br />
-                     Tente novamente.
+                     Para criar novos tópicos é necessário completar seu cadastro.
+                     <br>
+                     <br>
+                     <small><i>Clique no botão abaixo para ser redirecionado para a página de alterações de dados pessoais.</small>
                   </div>
                   <div class="modal-footer">
                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                     <button type="button" class="btn btn-primary"><a href="Editar-perfil.php" style="color: white; text-decoration: none;">Completar cadastro</a></button>
                   </div>
                </div>
             </div>
