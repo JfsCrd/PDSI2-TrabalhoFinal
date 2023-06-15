@@ -70,8 +70,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $foto = fread($fp, $foto_tam);
                 $foto = addslashes($foto);
                 fclose($fp);
-            } else
-                $foto = '';
+            } else{
+                $caminho_foto = "../assets/img/usuario.jpg";
+                $fp = fopen($caminho_foto, "rb");
+                $foto = fread($fp, filesize($caminho_foto));
+                $foto = addslashes($foto);
+                fclose($fp);
+            }
 
             $return_registro = registraUsuario($nome, $sobrenome, $matricula, $cpf, $data_nasc, $email_pessoal, $email_ufu, $telefone, $pais, $estado, $cidade, $cep, $rua, $numero, $bairro, $complemento, $formacao, $instituicao, $conclusao, $titulo, $cargo, $empresa, $area, $salario, $local, $descricao, $senha, $foto, $resumo, $rede, $rede_url);
 
