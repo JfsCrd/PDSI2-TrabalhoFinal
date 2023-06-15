@@ -4,15 +4,19 @@ include("../Model/Model-Usuario.php");
 
 // Obtém o termo de busca enviado pelo usuário
 $termo = $_GET['termo'];
+$filtro = $_GET['filtro'];
 
 // Escapa o termo para evitar SQL injection
 $termo = $conn->real_escape_string($termo);
+$filtro = $conn->real_escape_string($filtro);
 
 // Realiza a busca no banco de dados
 $sql = "SELECT * FROM usuario
         JOIN experiencia_concluida ON experiencia_concluida.id_experiencia_concluida = usuario.fk_experiencia_concluida
         JOIN acesso ON acesso.id_acesso = usuario.fk_acesso
-        WHERE nome LIKE '%$termo%' OR sobrenome LIKE '%$termo%' OR formacao LIKE '%$termo%' OR conclusao LIKE '%$termo%' ORDER BY nome ASC";
+        WHERE (nome LIKE '%$termo%' OR sobrenome LIKE '%$termo%' OR formacao LIKE '%$termo%' OR conclusao LIKE '%$termo%') AND (nome LIKE '%$filtro%' OR sobrenome LIKE '%$filtro%' OR formacao LIKE '%$filtro%' OR conclusao LIKE '%$filtro%')
+
+         ORDER BY nome ASC";
 $result = $conn->query($sql);
 
 // Exibe os resultados da busca

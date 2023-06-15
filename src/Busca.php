@@ -74,19 +74,22 @@ $nome = getNome($usuario);
             </div>
 
             <!-- Start: Campo de busca -->
-            <form method="GET" action="" id="form-busca" style="margin-left: 42px; padding-top: 14px;margin-right: 30px">
+            <form method="GET" action="" id="form-busca" style="margin-left: 42px; padding-top: 14px; margin-right: 30px">
                 <div class="form-group">
                     <div class="input-group">
-                        <input type="text" class="form-control" style="border-radius:0px"
+                        <input type="text" class="form-control" style="border-radius: 0px"
                             placeholder="Busque egressos por nome, sobrenome, data de conclusão ou instituição"
-                            name="termo-busca" id="termo-busca"/>
+                            name="termo-busca" id="termo-busca" oninput="habilitarFiltro()" />
+
+                        <input type="text" class="form-control" style="border-radius: 0px; margin-left: 10px;"
+                            placeholder="Adicione um filtro de busca"
+                            name="termo-filtro" id="termo-filtro" disabled />
                         <div class="input-group-append">
-                            <button type="submit" class="btn btn-primary" style="border-radius:0px"><i class="fas fa-search"></i></button>
+                            <button type="submit" class="btn btn-primary" style="border-radius: 0px"><i class="fas fa-search"></i></button>
                         </div>
                     </div>
                 </div>
             </form>
-            
             <!-- End: Campo de Busca -->
 
             <!-- Start: Resultados -->
