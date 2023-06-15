@@ -13,7 +13,6 @@ $(document).ready(function () {
       url: 'Controller/Controller-Usuario.php',
       data: formData,
       success: function (response) {
-        console.log('Resposta do Ajax:', response);
         if (response.trim() === 'sucesso') {
           // Oculta o modal para criar um novo comentário
           window.location.replace('../Alumni.php');

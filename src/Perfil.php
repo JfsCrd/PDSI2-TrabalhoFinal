@@ -72,13 +72,11 @@ if (isset($_GET['usuario'])) {
                <div class="dropdown ms-auto">
                   <a class="btn btn-secondary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                      data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 0%;">
-                     <span>Bem-vindo,
-                        <?php echo $_SESSION["usuario"]; ?>
+                     <span>Bem-vindo, <?php echo $usuario["nome"]; ?>
                      </span>
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                     <li><a class="dropdown-item" href="Perfil.php?usuario=<?php echo $_SESSION['usuario'] ?>">Meu
-                           Perfil</a></li>
+                     <li><a class="dropdown-item" href="Perfil.php?usuario=<?php echo $_SESSION['usuario'] ?>">Meu Perfil</a></li>
                      <li><a class="dropdown-item" href="Editar-perfil.php">Editar Dados</a></li>
                      <div class="dropdown-divider"></div>
                      <li><a class="dropdown-item " role="button" id='botao-logout' style="color: red"

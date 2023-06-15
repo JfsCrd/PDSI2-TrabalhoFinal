@@ -10,6 +10,7 @@ $(document).ready(function () {
   });
 });
 
+// Verifica se o usuário está apto a comentar
 function verificarRespostaPHP() {
   $.ajax({
     url: 'Controller/Controller-Forum.php',

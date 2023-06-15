@@ -34,13 +34,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    $verificacao = mysqli_query($conn, $sql);
    $numLinhas = mysqli_num_rows($verificacao);
 
-   if ($numLinhas > 0){
+   if ($numLinhas > 0) {
       echo 'success';
    } else {
       echo 'falha';
    }
-   
 
-   
+
+
 }
 ?>

@@ -9,34 +9,48 @@ function registraUsuario($nome, $sobrenome, $matricula, $cpf, $data_nasc, $email
 
     $senha_cripto = password_hash($senha, PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO contato (email_pessoal, email_ufu, telefone, pais, estado, cidade, rua,
-            numero, bairro, cep, complemento, rede_social, rede_social_url) VALUES ('$email_pessoal', '$email_ufu', '$telefone', null, null, null, null, null, null, null, null, '$rede', '$rede_url');";
+    try {
 
-    mysqli_query($conn, $sql);
-    $id_contato = mysqli_insert_id($conn);
+        $sql = "INSERT INTO contato (email_pessoal, email_ufu, telefone, pais, estado, cidade, rua,
+                numero, bairro, cep, complemento, rede_social, rede_social_url) VALUES ('$email_pessoal', '$email_ufu', '$telefone', null, null, null, null, null, null, null, null, '$rede', '$rede_url');";
 
-    $sql = "INSERT INTO experiencia_concluida (formacao, instituicao, conclusao, titulo) VALUES (null, null, null, null);";
+        mysqli_query($conn, $sql);
+        $id_contato = mysqli_insert_id($conn);
 
-    mysqli_query($conn, $sql);
-    $id_experiencia_concluida = mysqli_insert_id($conn);
+        $sql = "INSERT INTO experiencia_concluida (formacao, instituicao, conclusao, titulo) VALUES (null, null, null, null);";
 
-    $sql = "INSERT INTO experiencia_profissional (cargo, empresa, area, salario, local, descricao) VALUES (null, null, null, null, null, null);";
+        mysqli_query($conn, $sql);
+        $id_experiencia_concluida = mysqli_insert_id($conn);
 
-    mysqli_query($conn, $sql);
-    $id_experiencia_profissional = mysqli_insert_id($conn);
+        $sql = "INSERT INTO experiencia_profissional (cargo, empresa, area, salario, local, descricao) VALUES (null, null, null, null, null, null);";
 
-    $sql = "INSERT INTO acesso (usuario, senha) VALUES ('$matricula', '$senha_cripto');";
+        mysqli_query($conn, $sql);
+        $id_experiencia_profissional = mysqli_insert_id($conn);
 
-    mysqli_query($conn, $sql);
-    $id_acesso = mysqli_insert_id($conn);
+        $sql = "INSERT INTO acesso (usuario, senha) VALUES ('$matricula', '$senha_cripto');";
 
-    $sql = "INSERT INTO usuario (id_usuario, cpf, nome, sobrenome, data_nascimento, fk_contato, fk_experiencia_concluida, fk_experiencia_profissional, fk_acesso, resumo, foto)
-            VALUES ('$matricula', '$cpf', '$nome', '$sobrenome', '$data_nasc', $id_contato, $id_experiencia_concluida, $id_experiencia_profissional, $id_acesso, '$resumo', '$foto');";
+        mysqli_query($conn, $sql);
+        $id_acesso = mysqli_insert_id($conn);
+
+        $sql = "INSERT INTO usuario (id_usuario, cpf, nome, sobrenome, data_nascimento, fk_contato, fk_experiencia_concluida, fk_experiencia_profissional, fk_acesso, resumo, foto)
+                VALUES ('$matricula', '$cpf', '$nome', '$sobrenome', '$data_nasc', $id_contato, $id_experiencia_concluida, $id_experiencia_profissional, $id_acesso, '$resumo', '$foto');";
 
 
-    $command = mysqli_query($conn, $sql);
+        $command = mysqli_query($conn, $sql);
 
-    return $command;
+        if ($command)
+            return true;
+        else
+            return false;
+
+    } catch (mysqli_sql_exception $e) {
+        // Captura a exceção e exibe um alerta personalizado
+        echo "<script language='javascript' type='text/javascript'> 
+            alert('Usuário já cadastrado! Faça login para acessar a plataforma.'); 
+            window.location.href='/Login.html';
+            </script>";
+        exit;
+    }
 
 }
 
@@ -130,7 +144,8 @@ function getUsuarioURL($url)
     include("Model-DataBase.php");
 
     // Consulta o banco para obter o usuário com base na URL
-    $query = "SELECT usuario.*, experiencia_profissional.*, contato.*, acesso.usuario, experiencia_concluida.*, YEAR(experiencia_concluida.conclusao) as ano
+    $query = "SELECT usuario.*, experiencia_profissional.*, contato.*, acesso.usuario, 
+        experiencia_concluida.*, YEAR(experiencia_concluida.conclusao) as ano
         FROM usuario
         JOIN experiencia_profissional ON experiencia_profissional.id_experiencia_profissional = usuario.fk_experiencia_profissional
         JOIN contato ON contato.id_contato = usuario.fk_contato

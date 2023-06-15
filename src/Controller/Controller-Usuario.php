@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $foto = fread($fp, $foto_tam);
                 $foto = addslashes($foto);
                 fclose($fp);
-            } else{
+            } else {
                 $caminho_foto = "../assets/img/usuario.jpg";
                 $fp = fopen($caminho_foto, "rb");
                 $foto = fread($fp, filesize($caminho_foto));
@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($return_registro) {
                 $_SESSION['usuario'] = $matricula;
                 echo "<script language='javascript' type='text/javascript'> 
-                    alert('Successo! Bem vindo!'); 
+                    alert('Bem vindo! Complete seus dados para acesso total ao portal de egressos!'); 
                     window.location.href='/Alumni.php';
                 </script>";
                 exit;
@@ -91,11 +91,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo "<script language='javascript' type='text/javascript'> 
                     alert('Usuário já cadastrado! Faça login para acessar a plataforma.'); 
                     window.location.href='/Login.html';
-                </script>";
+                    </script>";
                 exit;
             }
-            
-            
+
         } else if ($acao === 'login') {
             $return_login = login($user, $pass);
             if ($return_login === 1) {

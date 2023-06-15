@@ -8,7 +8,7 @@ function meusTopicos(usuario) {
          // Atualiza a página com os resultados da busca
          $('#resultados-busca').html(result);
 
-         // Muda o placeholder da caixa de pesquisa e desativa o vampo de busca
+         // Muda o placeholder da caixa de pesquisa e desativa o campo de busca
          $('#termo-busca').attr('placeholder', 'Atualmente exibindo seus tópicos! Clique no botão ao lado para voltar a exibir todos os tópicos.');
          $('#termo-busca').attr('disabled', true);
 

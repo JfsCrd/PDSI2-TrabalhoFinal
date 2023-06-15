@@ -36,31 +36,42 @@ $termo = $conn->real_escape_string($termo);
 // Recebe o usuário para busca de tópicos do usuário
 $nome = $_GET['usuario'];
 
+$sql = "SET lc_time_names = 'pt_BR'";
+$conn->query($sql);
+
 // Realiza a busca no banco de dados
 // Se não for passado nenhum parâmetro
 if ($termo === '' and $nome === '') {
-   $sql = "SELECT usuario.nome, usuario.sobrenome, topico.*
+   $sql = "SELECT usuario.nome, usuario.sobrenome, topico.*,
+            DATE_FORMAT(topico.data, '%d de %b de %Y') AS data_formatada
             FROM topico
             JOIN usuario ON usuario.id_usuario = topico.fk_usuario
             ORDER BY topico.data DESC, topico.id_topico DESC";
    $result = $conn->query($sql);
+
 } else if ($nome != null) {
-   $sql = "SELECT usuario.nome, usuario.sobrenome, topico.*
-   FROM topico
-   JOIN usuario ON usuario.id_usuario = topico.fk_usuario
-   WHERE usuario.nome = '$nome'
-   ORDER BY topico.data DESC, topico.id_topico DESC";
+   $sql = "SELECT usuario.nome, usuario.sobrenome, topico.*,
+            DATE_FORMAT(topico.data, '%d de %b de %Y') AS data_formatada
+            FROM topico
+            JOIN usuario ON usuario.id_usuario = topico.fk_usuario
+            WHERE usuario.nome = '$nome'
+            ORDER BY topico.data DESC, topico.id_topico DESC";
 
    $result = $conn->query($sql);
 }
 
 // Caso haja parametros
 else {
-   $sql = "SELECT usuario.nome, usuario.sobrenome, topico.*
-            FROM topico
-            JOIN usuario ON usuario.id_usuario = topico.fk_usuario
-            WHERE titulo LIKE '%$termo%' OR  topico.assunto LIKE '%$termo%' OR topico.conteudo LIKE '%$termo%'
-            ORDER BY topico.data DESC, topico.id_topico DESC";
+
+   $sql = "SET lc_time_names = 'pt_PT'";
+   $conn->query($sql);
+
+   $sql = "SELECT usuario.nome, usuario.sobrenome, topico.*, 
+         DATE_FORMAT(topico.data, '%d de %b de %Y') AS data_formatada
+         FROM topico
+         JOIN usuario ON usuario.id_usuario = topico.fk_usuario
+         WHERE titulo LIKE '%$termo%' OR  topico.assunto LIKE '%$termo%' OR topico.conteudo LIKE '%$termo%'
+         ORDER BY topico.data DESC, topico.id_topico DESC";
 
    $result = $conn->query($sql);
 }
@@ -91,7 +102,7 @@ if ($result->num_rows > 0) {
                               <a href="http://localhost/Topico.php?url=' . $row['url'] . '" style="text-decoration: none;">
                                  <h5 class="card-title">' . $row['titulo'] . ' <span style="font-size: 12px; color:#555555">  | ' . $row['assunto'] . '</span></h5>
                               </a>
-                              <small class="text-muted">Por: ' . $row['nome'] . ' ' . $row['sobrenome'] . ', em ' . $row['data'] . ' </small>
+                              <small class="text-muted">Por: ' . $row['nome'] . ' ' . $row['sobrenome'] . ', em ' . $row['data_formatada'] . ' </small>
                               <div class="card-footer bg-transparent" style="text-align: justify; margin-left:-20px"; >
                                     <p style="color: #696969;">' . $conteudo . '</p>
                               </div>
