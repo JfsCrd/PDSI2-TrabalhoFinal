@@ -78,15 +78,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 fclose($fp);
             }
 
-            $return_registro = registraUsuario($nome, $sobrenome, $matricula, $cpf, $data_nasc, $email_pessoal, $email_ufu, $telefone, $pais, $estado, $cidade, $cep, $rua, $numero, $bairro, $complemento, $formacao, $instituicao, $conclusao, $titulo, $cargo, $empresa, $area, $salario, $local, $descricao, $senha, $foto, $resumo, $rede, $rede_url);
+            $return_registro = registraUsuario($nome, $sobrenome, $matricula, $cpf, $data_nasc, $email_pessoal, $email_ufu, $telefone, $senha, $foto, $resumo, $rede, $rede_url);
 
             if ($return_registro) {
-                echo "<script language ='javascript' type='text/javascript'> alert('Successo! Bem vindo!'); window.location.href='/Alumni.php' </script>";
-                header('Location: /Alumni.php');
+                $_SESSION['usuario'] = $matricula;
+                echo "<script language='javascript' type='text/javascript'> 
+                    alert('Successo! Bem vindo!'); 
+                    window.location.href='/Alumni.php';
+                </script>";
+                exit;
             } else {
-                echo "<script language ='javascript' type='text/javascript'> alert('Usuário já cadastrado! Faça login para acessar a plataforma.');</script>";
-                header('Location: /Login.html');
+                echo "<script language='javascript' type='text/javascript'> 
+                    alert('Usuário já cadastrado! Faça login para acessar a plataforma.'); 
+                    window.location.href='/Login.html';
+                </script>";
+                exit;
             }
+            
+            
         } else if ($acao === 'login') {
             $return_login = login($user, $pass);
             if ($return_login === 1) {

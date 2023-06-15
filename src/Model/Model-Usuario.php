@@ -3,24 +3,24 @@
 require_once("Model-DataBase.php");
 
 // Inserir Usuário
-function registraUsuario($nome, $sobrenome, $matricula, $cpf, $data_nasc, $email_pessoal, $email_ufu, $telefone, $pais, $estado, $cidade, $cep, $rua, $numero, $bairro, $complemento, $formacao, $instituicao, $conclusao, $titulo, $cargo, $empresa, $area, $salario, $local, $descricao, $senha, $foto, $resumo, $rede, $rede_url)
+function registraUsuario($nome, $sobrenome, $matricula, $cpf, $data_nasc, $email_pessoal, $email_ufu, $telefone, $senha, $foto, $resumo, $rede, $rede_url)
 {
     include("Model-DataBase.php");
 
     $senha_cripto = password_hash($senha, PASSWORD_DEFAULT);
 
     $sql = "INSERT INTO contato (email_pessoal, email_ufu, telefone, pais, estado, cidade, rua,
-            numero, bairro, cep, complemento, rede_social, rede_social_url) VALUES ('$email_pessoal', '$email_ufu', '$telefone', '$pais', '$estado', '$cidade', '$rua', $numero, '$bairro', '$cep', '$complemento', '$rede', '$rede_url');";
+            numero, bairro, cep, complemento, rede_social, rede_social_url) VALUES ('$email_pessoal', '$email_ufu', '$telefone', null, null, null, null, null, null, null, null, '$rede', '$rede_url');";
 
     mysqli_query($conn, $sql);
     $id_contato = mysqli_insert_id($conn);
 
-    $sql = "INSERT INTO experiencia_concluida (formacao, instituicao, conclusao, titulo) VALUES ('$formacao', '$instituicao', '$conclusao', '$titulo');";
+    $sql = "INSERT INTO experiencia_concluida (formacao, instituicao, conclusao, titulo) VALUES (null, null, null, null);";
 
     mysqli_query($conn, $sql);
     $id_experiencia_concluida = mysqli_insert_id($conn);
 
-    $sql = "INSERT INTO experiencia_profissional (cargo, empresa, area, salario, local, descricao) VALUES ('$cargo', '$empresa', '$area', $salario, '$local', '$descricao');";
+    $sql = "INSERT INTO experiencia_profissional (cargo, empresa, area, salario, local, descricao) VALUES (null, null, null, null, null, null);";
 
     mysqli_query($conn, $sql);
     $id_experiencia_profissional = mysqli_insert_id($conn);
@@ -49,8 +49,8 @@ function editarUsuario($nome, $sobrenome, $data_nasc, $foto, $resumo, $email_pes
     # USUÁRIO
     if ($foto != '') {
         $sql = "UPDATE usuario
-                    SET nome = '$nome', sobrenome = '$sobrenome', data_nascimento = '$data_nasc', foto = '$foto', resumo = '$resumo'
-                    WHERE usuario.id_usuario = '$id'";
+                SET nome = '$nome', sobrenome = '$sobrenome', data_nascimento = '$data_nasc', foto = '$foto', resumo = '$resumo'
+                WHERE usuario.id_usuario = '$id'";
 
         $command = mysqli_query($conn, $sql);
 
@@ -59,8 +59,8 @@ function editarUsuario($nome, $sobrenome, $data_nasc, $foto, $resumo, $email_pes
 
     } else {
         $sql = "UPDATE usuario
-                    SET nome = '$nome', sobrenome = '$sobrenome', data_nascimento = '$data_nasc', resumo = '$resumo'
-                    WHERE usuario.id_usuario = '$id'";
+                SET nome = '$nome', sobrenome = '$sobrenome', data_nascimento = '$data_nasc', resumo = '$resumo'
+                WHERE usuario.id_usuario = '$id'";
 
         $command = mysqli_query($conn, $sql);
 
@@ -70,8 +70,8 @@ function editarUsuario($nome, $sobrenome, $data_nasc, $foto, $resumo, $email_pes
 
     # CONTATO
     $sql = "UPDATE contato
-                SET telefone = '$telefone', pais = '$pais', estado = '$estado', cidade = '$cidade', cep = '$cep', rua = '$rua', numero = '$numero', bairro = '$bairro', complemento = '$complemento', email_pessoal = '$email_pessoal', rede_social = '$rede', rede_social_url = '$rede_url'
-                WHERE id_contato = '$fk_contato'";
+            SET telefone = '$telefone', pais = '$pais', estado = '$estado', cidade = '$cidade', cep = '$cep', rua = '$rua', numero = '$numero', bairro = '$bairro', complemento = '$complemento', email_pessoal = '$email_pessoal', rede_social = '$rede', rede_social_url = '$rede_url'
+            WHERE id_contato = '$fk_contato'";
 
     $command = mysqli_query($conn, $sql);
 
@@ -90,8 +90,8 @@ function editarUsuario($nome, $sobrenome, $data_nasc, $foto, $resumo, $email_pes
 
     # PROFISSINAL
     $sql = "UPDATE experiencia_profissional
-                SET area = '$area', cargo = '$cargo', descricao = '$descricao', empresa = '$empresa', local = '$local', salario = '$salario'
-                WHERE id_experiencia_profissional = '$fk_exp_prof'";
+            SET area = '$area', cargo = '$cargo', descricao = '$descricao', empresa = '$empresa', local = '$local', salario = '$salario'
+            WHERE id_experiencia_profissional = '$fk_exp_prof'";
 
     $command = mysqli_query($conn, $sql);
 
