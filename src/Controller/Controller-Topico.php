@@ -46,13 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Chamando a função de registro
             $return_registro = criarTopico($assunto, $data, $conteudo, $titulo, $id_usuario, $url_topico);
 
-            if ($return_registro === true) {
+            if ($return_registro['success'] === true) {
                // Obtém o ID do tópico recém-criado
-               $id_topico = mysqli_insert_id($conn);
-
-               // Atualiza o registro do tópico no banco de dados com a URL
-               $sql = "UPDATE topico SET url = '$url_topico' WHERE id_topico = '$id_topico'";
-               mysqli_query($conn, $sql);
+               $url_topico = $return_registro['url'];
 
                // Retorna uma resposta JSON com o status e a URL do tópico
                $response = array(

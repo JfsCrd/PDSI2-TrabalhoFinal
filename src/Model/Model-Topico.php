@@ -7,12 +7,28 @@ function criarTopico($assunto, $data, $conteudo, $titulo, $id_usuario, $url_topi
 {
    include("Model-DataBase.php");
 
+   // Obtém o ultimo id inserido
+   $sql = 'SELECT MAX(id_topico) as ultimo_id from topico';
+   $result = mysqli_query($conn, $sql);
+   $row = mysqli_fetch_assoc($result);
+
+   // Incrementa o último id inserido
+   $id_topico = $row['ultimo_id'] + 1;
+   
+   // Altera a url para o padrão
+   $url_topico = $id_topico . '-' . $url_topico;
+
    $sql = "INSERT INTO topico (assunto, conteudo, data, fk_usuario, titulo, url) 
             VALUES ('$assunto', '$conteudo', '$data', '$id_usuario', '$titulo', '$url_topico');";
 
    $command = mysqli_query($conn, $sql);
 
-   return $command;
+   $return = array(
+      'success' => true,
+      'url' => $url_topico
+   ); 
+
+   return $return;
 
 }
 
